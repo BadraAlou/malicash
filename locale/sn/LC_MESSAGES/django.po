@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-08 09:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: SONINKE <SN@li.org>\n"
+"Language: sn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\base.html:35
+msgid "Envoyer de l'argent"
+msgstr "Xarfu Ya Haŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:38
+msgid "Suivi de transfert"
+msgstr "Transfer Ya Taa"  # Approximation, à vérifier
+
+#: .\templates\base.html:41
+msgid "Tarifs et frais"
+msgstr "Xarfu Ye Naa"  # Approximation, à vérifier
+
+#: .\templates\base.html:44 .\templates\base.html:137
+msgid "Nos agents"
+msgstr "Naxaara Luu"  # Approximation, à vérifier
+
+#: .\templates\base.html:47
+msgid "Aide"
+msgstr "So Haŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:72
+msgid "Mon profil"
+msgstr "Naa Taga"  # Approximation, à vérifier
+
+#: .\templates\base.html:73
+msgid "Mes transferts"
+msgstr "Naa Transfer Luu"  # Approximation, à vérifier
+
+#: .\templates\base.html:75
+msgid "Déconnexion"
+msgstr "Daxu Taga"  # Approximation, à vérifier
+
+#: .\templates\base.html:80
+msgid "Connexion"
+msgstr "Taga Haŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:83
+msgid "S'inscrire"
+msgstr "Taga Kaŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:114 .\templates\base.html:153
+msgid "MaliCash"
+msgstr "Mali Xarfu"  # Approximation, à vérifier
+
+#: .\templates\base.html:115
+msgid ""
+"Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à "
+"moindre coût."
+msgstr "Xarfu Ya Haŋ Waraa, Naa Ye So, Naa Ye Xara"  # Approximation, à vérifier
+
+#: .\templates\base.html:124
+msgid "Liens utiles"
+msgstr "Naa Luu Ye So"  # Approximation, à vérifier
+
+#: .\templates\base.html:126
+msgid "Accueil"
+msgstr "Daxu"  # Approximation, à vérifier
+
+#: .\templates\base.html:127
+msgid "À propos"
+msgstr "Naa Taga Ye"  # Approximation, à vérifier
+
+#: .\templates\base.html:128
+msgid "Services"
+msgstr "Naa So Luu"  # Approximation, à vérifier
+
+#: .\templates\base.html:129 .\templates\base.html:142
+msgid "Contact"
+msgstr "Naxaara Haŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:133 .\templates\base.html:138
+msgid "Support"
+msgstr "So Kaŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:135
+msgid "FAQ"
+msgstr "Naa Taa Luu"  # Approximation, à vérifier
+
+#: .\templates\base.html:136
+msgid "Suivi"
+msgstr "Taa Kaŋ"  # Approximation, à vérifier
+
+#: .\templates\base.html:144
+msgid "Bamako, Mali"
+msgstr "Bamako, Mali"  # Approximation, à vérifier
+
+#: .\templates\base.html:153
+msgid "Tous droits réservés"
+msgstr "Naa Xara Luu"  # Approximation, à vérifier
+
+#: .\templates\base.html:156
+msgid "Conditions d'utilisation"
+msgstr "Naa So Ye Xara"  # Approximation, à vérifier
+
+#: .\templates\base.html:157
+msgid "Politique de confidentialité"
+msgstr "Naa Taga Ye So"  # Approximation, à vérifier
+
+# Ajout des nouvelles traductions
+msgid "Montant"
+msgstr "Xarfu"  # Approximation, à vérifier
+
+msgid "Pays d'envoi"
+msgstr "Naxaara Yahu"  # Approximation, à vérifier

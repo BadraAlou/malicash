@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Liste des agents de l’agence -->
+        <div class="col-lg-8">
+            <h2 class="fw-bold mb-4 text-primary">Notre équipe à Bacodjicoroni</h2>
+
+            {% for agent in agents %}
+            <div class="card mb-3 shadow-sm p-3">
+                <h5 class="mb-1 fw-semibold">{{ agent.name }}</h5>
+                <p class="mb-1 text-muted">{{ agent.role }}</p>
+                {% if agent.email %}
+                <p class="mb-0"><i class="fas fa-envelope text-primary me-2"></i>{{ agent.email }}</p>
+                {% endif %}
+                {% if agent.phone %}
+                <p><i class="fas fa-phone text-primary me-2"></i>{{ agent.phone }}</p>
+                {% endif %}
+            </div>
+            {% empty %}
+            <p class="text-muted">Aucun agent trouvé pour l’instant.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Info de localisation de l’agence -->
+        <div class="col-lg-4">
+            <div class="card p-4 shadow-sm">
+                <h4 class="fw-semibold">Localisation de l'agence</h4>
+                <p class="mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i>Bacodjicoroni, Bamako</p>
+                <img src="{% static 'img/map-bacodjicoroni.png' %}" alt="Carte Bacodjicoroni" class="img-fluid rounded-3 shadow">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

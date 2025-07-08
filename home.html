@@ -1,0 +1,1363 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<!-- Espace pour la navbar fixée -->
+{% comment %} <div style="height: 80px;"></div> {% endcomment %}
+<div class="main-content">
+    <!-- Section Hero corrigée -->
+    <section class="container-fluid p-0" style="background-color: rgb(9, 152, 49); min-height: 100vh;">
+        <div class="row align-items-center h-100">
+            <!-- Texte et formulaire à gauche -->
+            <div class="col-md-6 p-5">
+                <h1 class="display-4 mb-4 text-white fw-bold" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+                    {% trans "Bienvenue sur Transfert d'Argent !" %}
+                </h1>
+                
+                <p class="lead mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                    {% trans "Envoyez de l'argent à l'étranger rapidement et facilement." %}
+                </p>
+                
+                <p class="mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                    {% trans "Rejoignez les millions d'utilisateurs qui nous font confiance depuis des années pour leurs transferts d'argent." %}
+                </p>
+                
+                <p class="mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                    {% trans "Envoyez de l'argent en ligne à vos proches en quelques instants avec MaliCash. Avec plus de 200 pays et territoires couverts, les transferts d'argent internationaux n'ont jamais été aussi simples." %}
+                </p>
+
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a href="{% url 'transfer_money' %}" class="btn btn-light btn-lg text-success fw-bold action-button">
+                        <i class="fas fa-paper-plane me-2"></i>{% trans "Envoyer maintenant" %}
+                    </a>
+                    <a href="{% url 'track_transfer' %}" class="btn btn-outline-light btn-lg action-button">
+                        <i class="fas fa-search me-2"></i>{% trans "Suivre un transfert" %}
+                    </a>
+                </div>
+
+                <p class="text-white mt-4" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                    {% trans "Intelligence. Sécurité. Ensemble. Apprenez comment #BeFraudSmart" %}
+                </p>
+            </div>
+
+            <!-- Image à droite -->
+            <div class="col-md-6 p-0 position-relative" style="background-color: rgb(9, 152, 49); min-height: 100vh;">
+                <img src="{% static 'img/femm-transfert.jpg' %}" 
+                     alt="{% trans 'Transfert avec MaliCash' %}" 
+                     class="img-fluid position-absolute hero-image" 
+                     style="object-fit: cover; clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); top: 0; left: 0; width: 120%; height: 100%;">
+            </div>
+        </div>
+    </section>
+
+    <section class="currencies-section py-5">
+        <div class="container-fluid">
+            <div class="text-center mb-5">
+                <h2 class="section-title">
+                    <i class="fas fa-globe-americas me-3"></i>
+                    {% trans "Devises par Pays" %}
+                </h2>
+                <p class="section-subtitle">{% trans "Tous les taux sont exprimés en Franc CFA (XOF) - Notre devise de référence" %}</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="currencies-grid">
+                        <!-- Mali (Devise de référence) -->
+                        <div class="currency-card reference-currency" data-aos="fade-up" data-aos-delay="50">
+                            <div class="currency-flag">
+                                <span class="fi fi-ml flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Mali 🏠" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code reference">XOF</span>
+                                    <span class="currency-name">{% trans "Franc CFA BCEAO" %}</span>
+                                </div>
+                                <div class="currency-rate reference-rate">
+                                    <small><strong>{% trans "Devise de référence" %}</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- États-Unis -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="currency-flag">
+                                <span class="fi fi-us flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "États-Unis" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">USD</span>
+                                    <span class="currency-name">{% trans "Dollar américain" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 USD = <strong>600 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Euro (France, Espagne) -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="150">
+                            <div class="currency-flag">
+                                <span class="fi fi-fr flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "France, Espagne" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">EUR</span>
+                                    <span class="currency-name">{% trans "Euro" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 EUR = <strong>655 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gabon, Cameroun, Guinée Équatoriale -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="currency-flag">
+                                <span class="fi fi-ga flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Gabon, Cameroun, Guinée Éq." %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">XAF</span>
+                                    <span class="currency-name">{% trans "Franc CFA BEAC" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 XAF = <strong>1 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Guinée -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="250">
+                            <div class="currency-flag">
+                                <span class="fi fi-gn flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Guinée" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">GNF</span>
+                                    <span class="currency-name">{% trans "Franc guinéen" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>100 GNF = <strong>6.7 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Canada -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="currency-flag">
+                                <span class="fi fi-ca flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Canada" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">CAD</span>
+                                    <span class="currency-name">{% trans "Dollar canadien" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 CAD = <strong>445 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Burkina Faso, Bénin, Niger, Togo -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="350">
+                            <div class="currency-flag">
+                                <span class="fi fi-bf flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Burkina Faso, Bénin, Niger, Togo" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code same-currency">XOF</span>
+                                    <span class="currency-name">{% trans "Franc CFA BCEAO" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 XOF = <strong>1 XOF</strong> ✓</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turquie -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="currency-flag">
+                                <span class="fi fi-tr flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Turquie" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">TRY</span>
+                                    <span class="currency-name">{% trans "Lire turque" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 TRY = <strong>30 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Maroc -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="400">
+                            <div class="currency-flag">
+                                <span class="fi fi-ma flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Maroc" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">MAD</span>
+                                    <span class="currency-name">{% trans "Dirham marocain" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 MAD = <strong>60.6 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tunisie -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="450">
+                            <div class="currency-flag">
+                                <span class="fi fi-tn flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Tunisie" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">TND</span>
+                                    <span class="currency-name">{% trans "Dinar tunisien" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 TND = <strong>204.7 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chine -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="500">
+                            <div class="currency-flag">
+                                <span class="fi fi-cn flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Chine" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">CNY</span>
+                                    <span class="currency-name">{% trans "Yuan chinois" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>1 CNY = <strong>83.3 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Japon -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="550">
+                            <div class="currency-flag">
+                                <span class="fi fi-jp flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Japon" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">JPY</span>
+                                    <span class="currency-name">{% trans "Yen japonais" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>100 JPY = <strong>400 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Russie -->
+                        <div class="currency-card" data-aos="fade-up" data-aos-delay="600">
+                            <div class="currency-flag">
+                                <span class="fi fi-ru flag-icon"></span>
+                            </div>
+                            <div class="currency-info">
+                                <h5 class="country-name">{% trans "Russie" %}</h5>
+                                <div class="currency-details">
+                                    <span class="currency-code">RUB</span>
+                                    <span class="currency-name">{% trans "Rouble russe" %}</span>
+                                </div>
+                                <div class="currency-rate">
+                                    <small>10 RUB = <strong>63.2 XOF</strong></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Note explicative -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="exchange-note">
+                    <div class="alert alert-info d-flex align-items-center">
+                        <i class="fas fa-info-circle me-3"></i>
+                        <div>
+                            <strong>{% trans "Note :" %}</strong> {% trans "Tous les taux de change sont exprimés en Franc CFA (XOF), la devise officielle du Mali où se trouve notre siège social. Les taux sont mis à jour quotidiennement et peuvent varier selon les conditions du marché." %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">{% trans "Nos Services" %}</h2>
+        <p class="text-muted">{% trans "Des solutions complètes pour vos besoins de transfert d'argent" %}</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>{% trans "Transfert d'Argent International" %}</h4>
+                    <p>{% trans "Envoyez de l'argent à vos proches partout dans le monde en quelques clics." %}</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Transferts instantanés" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Taux de change compétitifs" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Frais transparents" %}</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">{% trans "Envoyer maintenant" %}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>{% trans "Transfert Mobile Money" %}</h4>
+                    <p>{% trans "Envoyez de l'argent directement vers un portefeuille mobile." %}</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Orange Money" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Wave" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Moov Money" %}</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">{% trans "Découvrir" %}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card shadow p-4 rounded-4 border-0 animate__animated animate__fadeInUp" style="min-height: 100%;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{% static 'img/livreur-moto.png' %}" alt="{% trans 'Agent en livraison' %}" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h5 class="mb-0 fw-bold">{% trans "Livraison à Domicile" %}</h5>
+                            <small class="text-muted">{% trans "Par agent MaliCash" %}</small>
+                        </div>
+                    </div>
+
+                    <p class="mb-3">
+                        {% trans "Vous avez une difficulté de déplacement ?" %}  
+                        {% trans "Nous envoyons un agent jusqu’à votre domicile pour :" %}
+                    </p>
+                    <ul class="list-unstyled mb-4">
+                        <li>✅ {% trans "Vous remettre l'argent envoyé par un proche" %}</li>
+                        <li>✅ {% trans "Vous aider à envoyer de l'argent depuis chez vous" %}</li>
+                        <li>✅ {% trans "Vous assister pour tout besoin de transfert" %}</li>
+                    </ul>
+
+                    <a href="https://wa.me/22369535415" class="btn btn-custom-yellow fw-bold w-100" style="background-color: #996500; border-color: #996500; color: white;">
+                        <i class="fas fa-motorcycle me-2"></i>{% trans "Contactez l'agence pour vos besoins" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>{% trans "Transfert Bancaire" %}</h4>
+                    <p>{% trans "Envoyez votre argent directement sur votre compte bancaire via MaliCash. Une fois le transfert effectué vers MaliCash, nous le transférons facilement sur les comptes de vos clients dans n'importe quelle banque." %}</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Transfert sécurisé vers les comptes bancaires" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Compatibilité avec toutes les banques" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Processus rapide et fiable" %}</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">{% trans "Transférer" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="faq py-5">
+    <div class="container-fluid px-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">{% trans "Questions fréquentes" %}</h2>
+            <p class="text-muted">{% trans "Trouvez rapidement les réponses à vos questions" %}</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="accordion" id="faqAccordion">
+                    <!-- Question 1 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Comment envoyer de l'argent vers un compte bancaire ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Pour envoyer de l'argent vers un compte bancaire :" %}</p>
+                                <ol>
+                                    <li>{% trans "Créez votre compte MaliCash" %}</li>
+                                    <li>{% trans "Sélectionnez 'Transfert vers compte bancaire'" %}</li>
+                                    <li>{% trans "Entrez les informations du destinataire (nom, IBAN, BIC)" %}</li>
+                                    <li>{% trans "Choisissez votre méthode de paiement" %}</li>
+                                    <li>{% trans "Confirmez et payez - c'est tout !" %}</li>
+                                </ol>
+                                <p>{% trans "Le transfert est généralement traité en 1-3 jours ouvrables." %}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Comment envoyer de l'argent depuis une agence ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Pour envoyer depuis notre agence de Bacodjicoroni :" %}</p>
+                                <ul>
+                                    <li>{% trans "Rendez-vous à notre agence avec une pièce d'identité" %}</li>
+                                    <li>{% trans "Remplissez le formulaire de transfert" %}</li>
+                                    <li>{% trans "Fournissez les informations du destinataire" %}</li>
+                                    <li>{% trans "Payez en espèces ou par carte" %}</li>
+                                    <li>{% trans "Recevez votre reçu avec le numéro de suivi" %}</li>
+                                </ul>
+                                <p><strong>{% trans "Adresse :" %}</strong> {% trans "Bacodjicoroni, Bamako, Mali" %}<br>
+                                <strong>{% trans "Horaires :" %}</strong> {% trans "Lun-Ven 8h-18h, Sam 9h-15h" %}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Comment envoyer de l'argent via l'application mobile ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Avec notre application mobile MaliCash :" %}</p>
+                                <ol>
+                                    <li>{% trans "Téléchargez l'app MaliCash sur votre smartphone" %}</li>
+                                    <li>{% trans "Créez votre compte et vérifiez votre identité" %}</li>
+                                    <li>{% trans "Ajoutez vos méthodes de paiement" %}</li>
+                                    <li>{% trans "Sélectionnez le destinataire ou ajoutez-en un nouveau" %}</li>
+                                    <li>{% trans "Entrez le montant et confirmez" %}</li>
+                                </ol>
+                                <p>{% trans "L'application est disponible sur iOS et Android. Transferts instantanés 24h/24 !" %}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Combien de temps pour recevoir un transfert ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Les délais de réception dépendent de la méthode choisie :" %}</p>
+                                <ul>
+                                    <li><strong>{% trans "Retrait en espèces :" %}</strong> {% trans "Immédiat à quelques minutes" %}</li>
+                                    <li><strong>{% trans "Portefeuille mobile :" %}</strong> {% trans "Instantané" %}</li>
+                                    <li><strong>{% trans "Compte bancaire :" %}</strong> {% trans "1-3 jours ouvrables" %}</li>
+                                    <li><strong>{% trans "Livraison à domicile :" %}</strong> {% trans "2-4 heures" %}</li>
+                                </ul>
+                                <p>{% trans "Vous recevrez une notification dès que le transfert est disponible pour le destinataire." %}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Quel est le montant maximum d'un transfert international ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Les limites de transfert varient selon votre statut :" %}</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="limit-card">
+                                            <h6><i class="fas fa-user me-2"></i><strong>{% trans "NKADJAGO :" %}</strong></h6>
+                                            <ul>
+                                                <li>{% trans "De 1 à 1 million par mois" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="limit-card">
+                                            <h6><i class="fas fa-user-check me-2"></i><strong>{% trans "Atchimma :" %}</strong></h6>
+                                            <ul>
+                                                <li>{% trans "De 1 million à 50 millions par mois" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3"><i class="fas fa-phone me-2"></i>{% trans "Pour des montants plus élevés, contactez notre service client au" %} <strong>+223 96 73 53 53</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Quels sont les frais de transfert ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p><i class="fas fa-calculator me-2"></i>{% trans "Nos frais sont transparents et compétitifs :" %}</p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th><i class="fas fa-money-bill-wave me-1"></i>{% trans "Montant (XOF)" %}</th>
+                                                <th><i class="fas fa-receipt me-1"></i>{% trans "Frais (XOF)" %}</th>
+                                                <th><i class="fas fa-clock me-1"></i>{% trans "Délai" %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{% trans "1 - 65 500 XOF" %}</td>
+                                                <td>{% trans "1 958 XOF" %}</td>
+                                                <td>{% trans "Instantané" %}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{% trans "65 501 - 327 500 XOF" %}</td>
+                                                <td>{% trans "3 267 XOF" %}</td>
+                                                <td>{% trans "Instantané" %}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{% trans "327 501 XOF et plus" %}</td>
+                                                <td>{% trans "1% du montant" %}</td>
+                                                <td>{% trans "Dans les 24h" %}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="alert alert-info mt-3">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <strong>{% trans "Aucun frais caché." %}</strong> {% trans "Le taux de change est fixé au moment de la transaction." %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Comment suivre mon transfert ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Plusieurs moyens pour suivre votre transfert :" %}</p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="tracking-method">
+                                            <i class="fas fa-mobile-alt fa-2x text-primary mb-2"></i>
+                                            <h6>{% trans "Application mobile" %}</h6>
+                                            <p>{% trans "Suivi en temps réel avec notifications" %}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tracking-method">
+                                            <i class="fas fa-globe fa-2x text-success mb-2"></i>
+                                            <h6>{% trans "Site web" %}</h6>
+                                            <p>{% trans "Entrez votre numéro de référence" %}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tracking-method">
+                                            <i class="fas fa-sms fa-2x text-warning mb-2"></i>
+                                            <h6>{% trans "SMS" %}</h6>
+                                            <p>{% trans "Notifications automatiques" %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                {% trans "Quels documents sont nécessaires ?" %}
+                            </button>
+                        </h2>
+                        <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Documents requis selon le type de transfert :" %}</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><i class="fas fa-user me-2"></i>{% trans "Pour l'expéditeur :" %}</h6>
+                                        <ul>
+                                            <li>{% trans "Pièce d'identité valide" %}</li>
+                                            <li>{% trans "Justificatif de domicile" %}</li>
+                                            <li>{% trans "Coordonnées bancaires (si applicable)" %}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><i class="fas fa-user-friends me-2"></i>{% trans "Pour le destinataire :" %}</h6>
+                                        <ul>
+                                            <li>{% trans "Nom complet" %}</li>
+                                            <li>{% trans "Numéro de téléphone" %}</li>
+                                            <li>{% trans "Adresse complète" %}</li>
+                                            <li>{% trans "Pièce d'identité (pour retrait)" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Innovations MaliCash -->
+<section class="py-5 bg-light" id="innovations">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 text-success">{% trans "Ce que MaliCash apporte de nouveau" %}</h2>
+        <div class="row g-4">
+            <!-- 1. Transfert personnalisé -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Transferts personnalisés" %}</h5>
+                        <p>{% trans "Des options flexibles pour les familles, entreprises ou transferts réguliers. MaliCash s’adapte à vos besoins." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Cryptomonnaies -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Intégration de cryptomonnaies" %}</h5>
+                        <p>{% trans "Envoyez de l'argent via Bitcoin, USDT et plus encore pour des transferts rapides et peu coûteux." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Fidélité -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Programme de fidélité" %}</h5>
+                        <p>{% trans "Gagnez des récompenses à chaque transaction avec notre système de points ou cashback." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Application mobile -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Application mobile intuitive" %}</h5>
+                        <p>{% trans "Suivi en temps réel, notifications personnalisées et assistance directe dans une seule appli." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. IA et sécurité -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Technologie de pointe" %}</h5>
+                        <p>{% trans "Nous utilisons l’IA pour sécuriser les transactions et améliorer votre expérience utilisateur." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Engagement communautaire -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Engagement communautaire" %}</h5>
+                        <p>{% trans "MaliCash soutient des projets locaux et des initiatives sociales dans chaque région d’intervention." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Plateforme éducative -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Plateforme éducative et financière" %}</h5>
+                        <p>{% trans "Des ressources utiles sur la gestion de l’argent, l’épargne et l’investissement, pour nos clients." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Microcrédit -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Solutions de microcrédit" %}</h5>
+                        <p>{% trans "Des petits prêts accessibles pour démarrer un projet ou gérer une urgence." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Paiements flexibles -->
+            <div class="col-md-6">
+                <div class="card border-success h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-success">{% trans "Options de paiement flexibles" %}</h5>
+                        <p>{% trans "Carte bancaire, portefeuille électronique ou espèces : choisissez votre méthode préférée." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Résumé -->
+        <div class="alert alert-success mt-5 text-center">
+            <strong>{% trans "MaliCash" %}</strong> {% trans "révolutionne le transfert d’argent en alliant technologie, accessibilité et impact social." %}
+        </div>
+    </div>
+</section>
+
+<!-- Rates and Calculator Section -->
+<section class="rates-section py-5">
+    <div class="container-fluid">
+        <div class="text-center mb-5">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line me-3"></i>
+                {% trans "Tarifs et Taux de change" %}
+            </h2>
+            <p class="section-subtitle">{% trans "Des frais transparents et des taux de change compétitifs" %}</p>
+        </div>
+        
+        <div class="row">
+            <!-- Calculateur principal amélioré -->
+            <div class="col-lg-8 mb-4">
+                <div class="calculator-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-calculator me-2"></i>{% trans "Calculez le montant à recevoir" %}</h4>
+                        <small class="text-muted">{% trans "Calcul automatique en temps réel" %}</small>
+                    </div>
+                    <div class="card-body">
+                        <form class="calculator-form">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">{% trans "Montant" %}</label>
+                                    <div class="input-group">
+                                        <input type="number" 
+                                               class="form-control amount-input" 
+                                               placeholder="0" 
+                                               id="amount"
+                                               min="1"
+                                               oninput="calculateAmountAuto()">
+                                        <span class="input-group-text currency-symbol" id="currencySymbol">XOF</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">{% trans "Devise d'envoi" %}</label>
+                                    <select class="form-select currency-select" id="fromCurrency" onchange="updateCurrencySymbol(); calculateAmountAuto();">
+                                        <optgroup label="{% trans '🌍 Devises Principales' %}">
+                                            <option value="XOF" data-symbol="XOF" selected>{% trans "XOF - Franc CFA BCEAO (Mali)" %}</option>
+                                            <option value="EUR" data-symbol="€">{% trans "EUR - Euro (France, Espagne)" %}</option>
+                                            <option value="USD" data-symbol="$">{% trans "USD - Dollar américain" %}</option>
+                                            <option value="CAD" data-symbol="CAD">{% trans "CAD - Dollar canadien" %}</option>
+                                            <option value="GBP" data-symbol="£">{% trans "GBP - Livre sterling" %}</option>
+                                        </optgroup>
+                                        <optgroup label="{% trans '🌍 Afrique' %}">
+                                            <option value="XAF" data-symbol="XAF">{% trans "XAF - Franc CFA BEAC (Gabon, Cameroun)" %}</option>
+                                            <option value="GNF" data-symbol="GNF">{% trans "GNF - Franc guinéen (Guinée)" %}</option>
+                                            <option value="MAD" data-symbol="MAD">{% trans "MAD - Dirham marocain (Maroc)" %}</option>
+                                            <option value="TND" data-symbol="TND">{% trans "TND - Dinar tunisien (Tunisie)" %}</option>
+                                            <option value="DZD" data-symbol="DZD">{% trans "DZD - Dinar algérien (Algérie)" %}</option>
+                                            <option value="NGN" data-symbol="₦">{% trans "NGN - Naira nigérian (Nigeria)" %}</option>
+                                            <option value="GHS" data-symbol="GHS">{% trans "GHS - Cedi ghanéen (Ghana)" %}</option>
+                                            <option value="SLL" data-symbol="SLL">{% trans "SLL - Leone (Sierra Leone)" %}</option>
+                                        </optgroup>
+                                        <optgroup label="{% trans '🌏 Autres' %}">
+                                            <option value="CNY" data-symbol="¥">{% trans "CNY - Yuan chinois (Chine)" %}</option>
+                                            <option value="JPY" data-symbol="¥">{% trans "JPY - Yen japonais (Japon)" %}</option>
+                                            <option value="CHF" data-symbol="CHF">{% trans "CHF - Franc suisse (Suisse)" %}</option>
+                                            <option value="AUD" data-symbol="AUD">{% trans "AUD - Dollar australien" %}</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">{% trans "Devise de réception" %}</label>
+                                    <select class="form-select currency-select" id="toCurrency" onchange="calculateAmountAuto();">
+                                        <optgroup label="{% trans '🎯 Destinations Populaires' %}">
+                                            <option value="XOF" selected>{% trans "XOF - Franc CFA BCEAO (Mali, Burkina Faso)" %}</option>
+                                            <option value="XAF">{% trans "XAF - Franc CFA BEAC (Gabon, Cameroun)" %}</option>
+                                            <option value="GNF">{% trans "GNF - Franc guinéen (Guinée)" %}</option>
+                                            <option value="MAD">{% trans "MAD - Dirham marocain (Maroc)" %}</option>
+                                            <option value="TND">{% trans "TND - Dinar tunisien (Tunisie)" %}</option>
+                                        </optgroup>
+                                        <optgroup label="{% trans '🌍 Autres Destinations' %}">
+                                            <option value="EUR">{% trans "EUR - Euro (France, Espagne)" %}</option>
+                                            <option value="USD">{% trans "USD - Dollar américain" %}</option>
+                                            <option value="CAD">{% trans "CAD - Dollar canadien" %}</option>
+                                            <option value="GBP">{% trans "GBP - Livre sterling" %}</option>
+                                            <option value="DZD">{% trans "DZD - Dinar algérien (Algérie)" %}</option>
+                                            <option value="NGN">{% trans "NGN - Naira nigérian (Nigeria)" %}</option>
+                                            <option value="GHS">{% trans "GHS - Cedi ghanéen (Ghana)" %}</option>
+                                            <option value="SLL">{% trans "SLL - Leone (Sierra Leone)" %}</option>
+                                            <option value="CNY">{% trans "CNY - Yuan chinois (Chine)" %}</option>
+                                            <option value="JPY">{% trans "JPY - Yen japonais (Japon)" %}</option>
+                                            <option value="CHF">{% trans "CHF - Franc suisse (Suisse)" %}</option>
+                                            <option value="AUD">{% trans "AUD - Dollar australien" %}</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Résultat du calcul automatique -->
+                        <div class="calculation-result mt-4" id="calculationResult" style="display: none;">
+                            <div class="result-card">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="result-item">
+                                            <div class="result-label">{% trans "Montant envoyé" %}</div>
+                                            <div class="result-value" id="sentAmount">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="result-item">
+                                            <div class="result-label">{% trans "Frais" %}</div>
+                                            <div class="result-value text-warning" id="fees">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="result-item">
+                                            <div class="result-label">{% trans "Taux de change" %}</div>
+                                            <div class="result-value" id="exchangeRate">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="result-item highlight">
+                                            <div class="result-label">{% trans "Montant reçu" %}</div>
+                                            <div class="result-value text-success" id="receivedAmount">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <p class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                {% trans "Calcul automatique basé sur les taux en temps réel." %} 
+                                <a href="#" class="text-primary">{% trans "En savoir plus" %}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grille tarifaire organisée -->
+            <div class="col-lg-4 mb-4">
+                <div class="fees-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-receipt me-2"></i>{% trans "Grille tarifaire" %}</h4>
+                        <small class="text-muted">{% trans "Frais en XOF (devise de référence)" %}</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover fees-table">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Montant (XOF)" %}</th>
+                                        <th>{% trans "Frais" %}</th>
+                                        <th>{% trans "Délai" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td>{% trans "1 - 65,500 XOF" %}</td>
+                                        <td class="fee-amount">{% trans "1,965 XOF" %}</td>
+                                        <td><span class="badge bg-success">{% trans "Instantané" %}</span></td>
+                                    </tr>
+                                    <tr class="table-info">
+                                        <td>{% trans "65,501 XOF - 327,500 XOF" %}</td>
+                                        <td class="fee-amount">{% trans "3,267 XOF" %}</td>
+                                        <td><span class="badge bg-success">{% trans "Instantané" %}</span></td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td>{% trans "327,501 XOF et plus" %}</td>
+                                        <td class="fee-amount">{% trans "1% du montant" %}</td>
+                                        <td><span class="badge bg-warning">{% trans "Dans les 24h" %}</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-success mt-3">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <strong>{% trans "Garantie transparence :" %}</strong> {% trans "Aucun frais caché. Le taux de change est fixé au moment de la transaction." %}
+                        </div>
+                        
+                        <!-- Avantages -->
+                        <div class="benefits-list mt-3">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                {% trans "Transferts sécurisés 24h/24" %}
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                {% trans "Suivi en temps réel" %}
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                {% trans "Support client multilingue" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Taux de change complets -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="exchange-rates-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4><i class="fas fa-sync-alt me-2"></i>{% trans "Taux de change en temps réel" %}</h4>
+                            <small class="text-muted">{% trans "Tous les taux sont convertis vers le Franc CFA (XOF) - Devise de référence du Mali" %}</small>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted">{% trans "Dernière mise à jour:" %} <span id="lastUpdate">-</span></small>
+                            <br>
+                            <button class="btn btn-sm btn-outline-primary" onclick="updateRates()">
+                                <i class="fas fa-refresh me-1"></i>{% trans "Actualiser" %}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="rates-grid">
+                            <div class="rate-item featured">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ml"></span>
+                                    XOF → XOF
+                                </div>
+                                <div class="rate-value">1.0000</div>
+                                <div class="rate-change neutral">{% trans "Référence" %}</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-fr"></span>
+                                    EUR → XOF
+                                </div>
+                                <div class="rate-value">655.00</div>
+                                <div class="rate-change positive">+0.5%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-us"></span>
+                                    USD → XOF
+                                </div>
+                                <div class="rate-value">600.00</div>
+                                <div class="rate-change negative">-0.2%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ca"></span>
+                                    CAD → XOF
+                                </div>
+                                <div class="rate-value">445.00</div>
+                                <div class="rate-change positive">+0.3%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-gb"></span>
+                                    GBP → XOF
+                                </div>
+                                <div class="rate-value">750.00</div>
+                                <div class="rate-change positive">+0.8%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ga"></span>
+                                    XAF → XOF
+                                </div>
+                                <div class="rate-value">1.0000</div>
+                                <div class="rate-change neutral">{% trans "Parité" %}</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-gn"></span>
+                                    GNF → XOF
+                                </div>
+                                <div class="rate-value">0.0667</div>
+                                <div class="rate-change positive">+1.2%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-tr"></span>
+                                    TRY → XOF
+                                </div>
+                                <div class="rate-value">30.00</div>
+                                <div class="rate-change positive">+0.2%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ma"></span>
+                                    MAD → XOF
+                                </div>
+                                <div class="rate-value">60.65</div>
+                                <div class="rate-change negative">-0.1%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-tn"></span>
+                                    TND → XOF
+                                </div>
+                                <div class="rate-value">204.69</div>
+                                <div class="rate-change positive">+0.4%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-dz"></span>
+                                    DZD → XOF
+                                </div>
+                                <div class="rate-value">4.48</div>
+                                <div class="rate-change negative">-0.3%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ng"></span>
+                                    NGN → XOF
+                                </div>
+                                <div class="rate-value">0.39</div>
+                                <div class="rate-change positive">+2.1%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-cn"></span>
+                                    CNY → XOF
+                                </div>
+                                <div class="rate-value">83.33</div>
+                                <div class="rate-change negative">-0.6%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                {% trans "Les taux affichés sont indicatifs et peuvent varier légèrement lors de la transaction." %}
+                                <br>
+                                <strong>{% trans "Mali (XOF)" %}</strong> {% trans "est notre devise de référence pour tous les calculs." %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<!-- Testimonials Section -->
+<section class="testimonials py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-malicash-green mb-3">{% trans "Ce que disent nos clients" %}</h2>
+            <p class="lead text-muted">{% trans "Découvrez les expériences authentiques de nos utilisateurs satisfaits" %}</p>
+            <div class="d-flex justify-content-center mb-4">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ms-2 text-muted">{% trans "4.9/5 basé sur 1000+ avis" %}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                    <div class="carousel-inner">
+                        {% if testimonials %}
+                            {% for testimonial in testimonials %}
+                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    <div class="card testimonial-card shadow-lg">
+                                        <div class="card-body text-center p-5">
+                                            <div class="testimonial-quote text-malicash-green mb-4">
+                                                <i class="fas fa-quote-left fa-3x"></i>
+                                            </div>
+                                            <div class="star-rating mb-3">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <p class="testimonial-text mb-4 text-dark">{{ testimonial.comment|safe }}</p>
+                                            <div class="client-avatar">
+                                                {{ testimonial.name|first }}
+                                            </div>
+                                            <h5 class="mb-1 text-malicash-green">{{ testimonial.name }}</h5>
+                                            <p class="text-muted mb-0">
+                                                <i class="fas fa-map-marker-alt me-1"></i>{{ testimonial.location }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="carousel-item active">
+                                <div class="card testimonial-card shadow-lg">
+                                    <div class="card-body text-center p-5">
+                                        <div class="testimonial-quote text-malicash-green mb-4">
+                                            <i class="fas fa-quote-left fa-3x"></i>
+                                        </div>
+                                        <div class="star-rating mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="testimonial-text mb-4 text-dark">
+                                            {% blocktrans %}"MaliCash m'a permis d'envoyer de l'argent à ma famille en quelques minutes ! Le service est incroyablement rapide et fiable. Je recommande vivement cette plateforme."{% endblocktrans %}
+                                        </p>
+                                        <div class="client-avatar">A</div>
+                                        <h5 class="mb-1 text-malicash-green">{% trans "Aïssata Diallo" %}</h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-1"></i>{% trans "Bamako, Mali" %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card testimonial-card shadow-lg">
+                                    <div class="card-body text-center p-5">
+                                        <div class="testimonial-quote text-malicash-green mb-4">
+                                            <i class="fas fa-quote-left fa-3x"></i>
+                                        </div>
+                                        <div class="star-rating mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="testimonial-text mb-4 text-dark">
+                                            {% blocktrans %}"Le service est rapide, sécurisé et facile à utiliser. Les frais sont transparents et les taux de change sont excellents. Une vraie révolution dans les transferts d'argent !"{% endblocktrans %}
+                                        </p>
+                                        <div class="client-avatar">M</div>
+                                        <h5 class="mb-1 text-malicash-green">{% trans "Moussa Touré" %}</h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-1"></i>{% trans "Paris, France" %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card testimonial-card shadow-lg">
+                                    <div class="card-body text-center p-5">
+                                        <div class="testimonial-quote text-malicash-green mb-4">
+                                            <i class="fas fa-quote-left fa-3x"></i>
+                                        </div>
+                                        <div class="star-rating mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="testimonial-text mb-4 text-dark">
+                                            {% blocktrans %}"J'adore la simplicité de l'application MaliCash. Je peux envoyer de l'argent à ma famille à tout moment et de n'importe où. Interface intuitive et support client exceptionnel !"{% endblocktrans %}
+                                        </p>
+                                        <div class="client-avatar">F</div>
+                                        <h5 class="mb-1 text-malicash-green">{% trans "Fatoumata Camara" %}</h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-1"></i>{% trans "Dakar, Sénégal" %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">{% trans "Précédent" %}</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">{% trans "Suivant" %}</span>
+                    </button>
+                    
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" style="background-color: #166534;"></button>
+                        <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" style="background-color: #166534;"></button>
+                        <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2" style="background-color: #166534;"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download App Section -->
+<section class="mobile-app-section py-5 mb-5">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <!-- Colonne texte et boutons -->
+            <div class="col-lg-6">
+                <div class="coming-soon-badge">
+                    <i class="fas fa-rocket me-2"></i>
+                    {% trans "Bientôt disponible sur les stores !" %}
+                </div>
+                
+                <h2 class="display-5 fw-bold mb-4 animated-title">
+                    {% trans "Téléchargez notre application mobile une fois prêt" %}
+                </h2>
+                <p class="lead mb-4 animated-text">
+                    {% trans "Envoyez de l'argent, suivez vos transferts et gérez votre compte où que vous soyez, à tout moment. L'application MaliCash sera bientôt disponible sur Google Play et App Store." %}
+                </p>
+                
+                <div class="feature-highlight mb-4">
+                    <h5 class="text-white mb-2">
+                        <i class="fas fa-info-circle me-2"></i>
+                        {% trans "Application en développement" %}
+                    </h5>
+                    <p class="text-white-50 mb-0">
+                        {% trans "Notre équipe travaille activement sur le développement de l'application mobile. Elle sera disponible sur Google Play et App Store dans les prochaines semaines. Et la version Android Bientôt InchaAllah, vous pouvez teste une fois prêt via le téléchargement direct." %}
+                    </p>
+                </div>
+                
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <button class="btn btn-light btn-lg store-button-disabled" disabled>
+                        <i class="fab fa-google-play me-2"></i>{% trans "Google Play" %}
+                    </button>
+                    <button class="btn btn-outline-light btn-lg store-button-disabled" disabled>
+                        <i class="fab fa-apple me-2"></i>{% trans "App Store" %}
+                    </button>
+                </div>
+                
+                <div class="mt-4">
+                    <p class="text-white-50 mb-3">
+                        <i class="fas fa-download me-1 animated-icon"></i>
+                        {% trans "Téléchargement direct (version test)" %} :
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="/static/downloads/malicashapps.apk"
+                            download
+                            class="btn btn-sm animated-download-button">
+                            <i class="fab fa-android me-2"></i>
+                            <span>{% trans "APK Android" %}</span>
+                            <small class="d-block">{% trans "Version 1.0.0 Beta" %}</small>
+                        </a>
+                    </div>
+                    <small class="text-white-50 d-block mt-2">
+                        <i class="fas fa-shield-alt me-1"></i>
+                        {% trans "Fichier sécurisé et testé • Taille: 25 MB" %}
+                    </small>
+                </div>
+                
+                <div class="feature-highlight mt-4">
+                    <h6 class="text-white mb-2">{% trans "Fonctionnalités de l'application :" %}</h6>
+                    <div class="row">
+                        <div class="col-6">
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>{% trans "Transferts rapides" %}
+                            </small>
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>{% trans "Suivi en temps réel" %}
+                            </small>
+                        </div>
+                        <div class="col-6">
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>{% trans "Notifications push" %}
+                            </small>
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>{% trans "Interface intuitive" %}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colonne image -->
+            <div class="col-lg-6">
+                <div class="mobile-image-container">
+                    <img src="https://images.pexels.com/photos/6347720/pexels-photo-6347720.jpeg"
+                    alt="{% trans 'MaliCash App - Bientôt disponible' %}"
+                    class="img-fluid rounded-4 shadow animated-image"
+                    style="width: 100%; height: auto; max-height: 600px; object-fit: cover;">
+                    
+                    <div style="position: absolute; top: 20px; right: 20px; background: linear-gradient(45deg, #fbbf24, #f59e0b); color: white; padding: 8px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; animation: pulse 2s infinite;">
+                        {% trans "Bientôt !" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function showComingSoon(store) {
+    alert(`{% trans "L'application MaliCash sera bientôt disponible sur" %} ${store}. {% trans "Restez connectés !" %}`);
+}
+</script>
+</div>
+{% endblock %}

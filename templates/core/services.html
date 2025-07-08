@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="main-content text-center mb-5">
+        <h2 class="fw-bold">Nos Services</h2>
+        <p class="text-muted">Des solutions complètes pour vos besoins de transfert d'argent</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>Transfert d'Argent International</h4>
+                    <p>Envoyez de l'argent à vos proches partout dans le monde en quelques clics.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transferts instantanés</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Taux de change compétitifs</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Frais transparents</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Envoyer maintenant</a>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Transfert Mobile Money</h4>
+                    <p>Envoyez de l'argent directement vers un portefeuille mobile.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Orange Money</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Wave</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Moov Money</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Découvrir</a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>{% trans "Transfert Mobile Money" %}</h4>
+                    <p>{% trans "Envoyez de l'argent directement vers un portefeuille mobile via MaliCash." %}</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Orange Money" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Wave" %}</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Moov Money" %}</li>
+                    </ul>
+
+                    <h5 class="mt-4">{% trans "Effectuer un transfert" %}</h5>
+                    <p class="text-muted small">{% trans "Entrez le numéro du destinataire pour un transfert rapide et sécurisé." %}</p>
+
+                    <form action="{% url 'process_mobile_transfer' %}" method="post" class="mt-3">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="recipient_number" class="form-label">{% trans "Numéro du destinataire (Mobile Money)" %}</label>
+                            <input type="tel" class="form-control" id="recipient_number" name="recipient_number" placeholder="{% trans '+223 70 00 00 00' %}" pattern="[0-9+]{10,13}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">{% trans "Montant (XOF)" %}</label>
+                            <input type="number" class="form-control" id="amount" name="amount" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom-yellow w-100" style="background-color: #996500; border-color: #996500; color: white;">
+                            <i class="fas fa-paper-plane me-2"></i>{% trans "Effectuer le transfert" %}
+                        </button>
+                    </form>
+                    <p class="text-muted mt-2 small">{% trans "Note : Assurez-vous que le numéro est valide et associé à un portefeuille mobile compatible (Orange Money, Wave, Moov Money)." %}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card shadow p-4 rounded-4 border-0 animate__animated animate__fadeInUp" style="min-height: 100%;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{% static 'img/livreur-moto.png' %}" alt="Agent en livraison" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Livraison à Domicile</h5>
+                            <small class="text-muted">Par agent MaliCash</small>
+                        </div>
+                    </div>
+
+                    <p class="mb-3">
+                        Vous avez une dificulté de déplacement  ?  
+                        Nous envoyons un agent jusqu’à votre domicile pour :
+                    </p>
+                    <ul class="list-unstyled mb-4">
+                        <li>✅ Vous remettre l'argent envoyé par un proche</li>
+                        <li>✅ Vous aider à envoyer de l'argent depuis chez vous</li>
+                        <li>✅ Vous assister pour tout besoin de transfert</li>
+                    </ul>
+
+                    <a href="https://wa.me/22369535415" class="btn btn-custom-yellow fw-bold w-100" style="background-color: #996500; border-color: #996500; color: white;">
+                        <i class="fas fa-motorcycle me-2"></i>Contactez l'agence pour vos besoins
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Transfert Bancaire</h4>
+                    <p>Envoyez votre argent directement sur votre compte bancaire via MaliCash. Une fois le transfert effectué vers MaliCash, nous le transférons facilement sur les comptes de vos clients dans n'importe quelle banque.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transfert sécurisé vers les comptes bancaires</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Compatibilité avec toutes les banques</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Processus rapide et fiable</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Transférer</a>
+                </div>
+                    {% comment %} </div>
+                    <h4>Transfert Bancaire</h4>
+                    <p>Envoyez de l'argent directement sur un compte bancaire.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transfert SEPA</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transfert SWIFT</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Virement local</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Transférer</a>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% comment %}<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Nos Services</h2>
+        <p class="text-muted">Des solutions complètes pour vos besoins de transfert d'argent</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>Transfert d'Argent International</h4>
+                    <p>Envoyez de l'argent à vos proches partout dans le monde en quelques clics.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transferts instantanés</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Taux de change compétitifs</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Frais transparents</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-primary mt-3">Envoyer maintenant</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Transfert Mobile Money</h4>
+                    <p>Envoyez de l'argent directement vers un portefeuille mobile.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Orange Money</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Wave</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Moov Money</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-primary mt-3">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card shadow p-4 rounded-4 border-0 animate__animated animate__fadeInUp" style="min-height: 100%;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{% static 'img/livreur-moto.png' %}" alt="Agent en livraison" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Livraison à Domicile</h5>
+                            <small class="text-muted">Par agent MaliCash</small>
+                        </div>
+                    </div>
+
+                    <p class="mb-3">
+                        Vous n’avez pas accès à Internet ou vous ne pouvez pas vous déplacer ?  
+                        Nous envoyons un agent jusqu’à votre domicile pour :
+                    </p>
+                    <ul class="list-unstyled mb-4">
+                        <li>✅ Vous remettre l'argent envoyé par un proche</li>
+                        <li>✅ Vous aider à envoyer de l'argent depuis chez vous</li>
+                        <li>✅ Vous assister pour tout besoin de transfert</li>
+                    </ul>
+
+                    <a href="https://wa.me/22369535415" class="btn btn-primary fw-bold w-100" target="_blank">
+                        <i class="fas fa-motorcycle me-2"></i>Contacter un agent maintenant
+                    </a>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="card-body p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h4>Paiement de Factures</h4>
+                    <p>Réglez vos factures en toute simplicité depuis notre plateforme.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Électricité</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Eau</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Internet</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary mt-3">Payer une facture</a>
+                </div> {% endcomment %}
+            {% comment %} </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Transfert Bancaire</h4>
+                    <p>Envoyez de l'argent directement sur un compte bancaire.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transfert SEPA</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transfert SWIFT</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Virement local</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-primary mt-3">Transférer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+

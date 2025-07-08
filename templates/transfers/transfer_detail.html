@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-header bg-primary text-white p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">Détails du transfert</h3>
+                        <span class="badge bg-{{ transfer.status|yesno:'success,warning,danger' }} py-2 px-3 fs-6">
+                            {{ transfer.get_status_display }}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <div class="display-6 fw-bold text-primary">{{ transfer.amount }} {{ transfer.from_currency.code }}</div>
+                        <div class="text-muted">Référence: {{ transfer.reference }}</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h5 class="border-bottom pb-2 mb-3">Informations d'envoi</h5>
+                            <p><strong>Expéditeur:</strong> {{ transfer.sender.get_full_name }}</p>
+                            <p><strong>Pays d'envoi:</strong> {{ transfer.from_country.name }}</p>
+                            <p><strong>Devise d'envoi:</strong> {{ transfer.from_currency.code }}</p>
+                            <p><strong>Méthode de paiement:</strong> {{ transfer.payment_method.name }}</p>
+                            <p><strong>Date d'envoi:</strong> {{ transfer.created_at|date:"d/m/Y H:i" }}</p>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h5 class="border-bottom pb-2 mb-3">Informations de réception</h5>
+                            <p><strong>Destinataire:</strong> {{ transfer.receiver_name }}</p>
+                            <p><strong>Téléphone:</strong> {{ transfer.receiver_phone }}</p>
+                            <p><strong>Email:</strong> {{ transfer.receiver_email|default:"Non spécifié" }}</p>
+                            <p><strong>Pays de destination:</strong> {{ transfer.to_country.name }}</p>
+                            <p><strong>Devise de réception:</strong> {{ transfer.to_currency.code }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="border-bottom pb-2 mb-3">Résumé financier</h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td>Montant envoyé:</td>
+                                        <td class="text-end">{{ transfer.amount }} {{ transfer.from_currency.code }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Frais:</td>
+                                        <td class="text-end">{{ transfer.fee }} {{ transfer.from_currency.code }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total débité:</td>
+                                        <td class="text-end fw-bold">{{ transfer.total }} {{ transfer.from_currency.code }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Taux de change:</td>
+                                        <td class="text-end">1 {{ transfer.from_currency.code }} = {{ transfer.exchange_rate }} {{ transfer.to_currency.code }}</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td>Montant à recevoir:</td>
+                                        <td class="text-end fw-bold">{{ transfer.received_amount }} {{ transfer.to_currency.code }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% if transfer.notes %}
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <h5 class="border-bottom pb-2 mb-3">Notes</h5>
+                            <div class="p-3 bg-light rounded">
+                                {{ transfer.notes }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'transfer_history' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i>Retour à l'historique
+                        </a>
+                        <div>
+                            <a href="#" class="btn btn-outline-secondary me-2">
+                                <i class="fas fa-print me-2"></i>Imprimer
+                            </a>
+                            <a href="#" class="btn btn-success">
+                                <i class="fas fa-share-alt me-2"></i>Partager
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

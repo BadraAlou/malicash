@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block extra_css %}
+<style>
+    .bg-malicash-green {
+        background-color: #166534 !important; /* Vert foncé */
+    }
+    .text-malicash-green {
+        color: #166534 !important;
+    }
+    .btn-malicash-green {
+        background-color: #166534;
+        border-color: #166534;
+        color: white;
+    }
+    .btn-malicash-green:hover {
+        background-color: #14532d;
+        border-color: #14532d;
+        color: white;
+    }
+    .btn-outline-malicash-green {
+        color: #166534;
+        border-color: #166534;
+        background-color: transparent;
+    }
+    .btn-outline-malicash-green:hover {
+        background-color: #166534;
+        border-color: #166534;
+        color: white;
+    }
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        font-size: 1.5rem;
+    }
+    .form-control:focus {
+        border-color: #166534;
+        box-shadow: 0 0 0 0.2rem rgba(22, 101, 52, 0.25);
+    }
+    .contact-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- En-tête de la section -->
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-dark mb-3">Contactez-nous</h2>
+                <p class="lead text-muted">Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans vos transferts d'argent.</p>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="row mb-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow contact-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-malicash-green text-white rounded-circle mb-3">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h5 class="card-title">Téléphone</h5>
+                            <p class="mb-1"><strong>+223 96 73 53 53</strong></p>
+                            <p class="text-muted">+223 94 54 63 27</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow contact-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-malicash-green text-white rounded-circle mb-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h5 class="card-title">Email</h5>
+                            <p class="mb-1">
+                                <a href="mailto:contactmalicash@gmail.com" class="text-decoration-none text-primary">
+                                    contactmalicash@gmail.com
+                                </a>
+                            </p>
+                            <p class="text-malicash-green fw-bold mb-0">www.contact@mali-cash.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow contact-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-malicash-green text-white rounded-circle mb-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h5 class="card-title">Adresse</h5>
+                            <p class="mb-1"><strong>Siège social:</strong></p>
+                            <p class="mb-2">Baco Djicoroni ACI</p>
+                            <p class="text-muted mb-3">Bamako, Mali</p>
+                            <button onclick="openGoogleMaps()" class="btn btn-outline-malicash-green btn-sm">
+                                <i class="fas fa-directions me-1"></i>Voir l'itinéraire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulaire de contact -->
+            <div class="card border-0 shadow">
+                <div class="card-body p-5">
+                    <h3 class="card-title text-center mb-4">Envoyez-nous un message</h3>
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name" class="form-label fw-semibold">Nom complet</label>
+                                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Votre nom complet" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="form-label fw-semibold">Email</label>
+                                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="votre.email@exemple.com" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="subject" class="form-label fw-semibold">Sujet</label>
+                                    <input type="text" class="form-control form-control-lg" id="subject" name="subject" placeholder="Objet de votre message" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="message" class="form-label fw-semibold">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="6" placeholder="Décrivez votre demande en détail..." required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-malicash-green btn-lg px-5 py-3">
+                                    <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Carte de localisation -->
+            <div class="card border-0 shadow mt-5">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4 text-malicash-green">
+                        <i class="fas fa-map-marked-alt me-2"></i>Notre localisation
+                    </h4>
+                    <div id="contactMap" style="height: 400px;" class="rounded shadow-sm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openGoogleMaps() {
+    const query = "malicash Baco Djicoroni ACI Bamako Mali";
+    const url = `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
+    window.open(url, '_blank');
+}
+</script>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+<script>
+    function initMap() {
+        // Coordonnées approximatives de Baco Djicoroni ACI, Bamako
+        const location = {lat: 12.6392, lng: -8.0029};
+        
+        const map = new google.maps.Map(document.getElementById('contactMap'), {
+            zoom: 16,
+            center: location,
+            styles: [
+                {
+                    featureType: "poi.business",
+                    elementType: "labels",
+                    stylers: [{ visibility: "on" }]
+                }
+            ]
+        });
+
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "MaliCash - Siège Social",
+            icon: {
+                url: 'data:image/svg+xml;base64,' + btoa(`
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#166534">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                `),
+                scaledSize: new google.maps.Size(40, 40)
+            }
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: `
+                <div style="padding: 10px;">
+                    <h6 style="color: #166534; margin-bottom: 5px;">MaliCash</h6>
+                    <p style="margin: 0; font-size: 14px;">Siège Social<br>Baco Djicoroni ACI<br>Bamako, Mali</p>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #666;">+223 96 73 53 53</p>
+                </div>
+            `
+        });
+
+        marker.addListener('click', () => {
+            infoWindow.open(map, marker);
+        });
+    }
+
+    window.onload = initMap;
+</script>
+{% endblock %}
+
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Contactez-nous</h2>
+                    
+                    <div class="row mb-5">
+                        <div class="col-md-4 text-center mb-4 mb-md-0">
+                            <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h5>Téléphone</h5>
+                            <p>+223 20 00 00 00</p>
+                            <p>+223 94 54 63 27</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-4 mb-md-0">
+                            <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h5>Email</h5>
+                            <p>
+                                <a href="mailto:contact@malicash.com" class="text-decoration-none text-primary fw-bold">
+                                    contactmalicash@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h5>Adresse</h5>
+                            <p>123 Rue du Commerce</p>
+                            <p>Bamako, Mali</p>
+                        </div>
+                    </div>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Nom complet</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="subject">Sujet</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-5 py-2">
+                                    <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card border-0 shadow mt-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4">Notre localisation</h4>
+                    <div id="contactMap" style="height: 300px;" class="rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+<script>
+    function initMap() {
+        const location = {lat: 12.6392, lng: -8.0029}; // Bamako coordinates
+        const map = new google.maps.Map(document.getElementById('contactMap'), {
+            zoom: 15,
+            center: location
+        });
+        
+        new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "MaliCash Siège"
+        });
+    }
+
+    window.onload = initMap;
+</script>
+{% endblock %}
+{% endblock %} {% endcomment %}

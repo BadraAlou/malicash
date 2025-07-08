@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block extra_css %}
+<style>
+    .bg-malicash-green {
+        background-color: #166534 !important;
+    }
+    .text-malicash-green {
+        color: #166534 !important;
+    }
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        font-size: 1.8rem;
+    }
+    .about-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none !important;
+    }
+    .about-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(22, 101, 52, 0.15) !important;
+    }
+    .check-icon {
+        color: #166534;
+        font-size: 1.2rem;
+    }
+    .hero-image {
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .hero-image:hover {
+        transform: scale(1.02);
+    }
+    .section-title {
+        position: relative;
+        padding-bottom: 15px;
+    }
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: #166534;
+        border-radius: 2px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Section principale À propos -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="display-5 fw-bold text-dark section-title mb-4">À propos de MaliCash</h2>
+            <p class="lead mb-4 text-muted">
+                MaliCash est votre partenaire de confiance pour les transferts d'argent internationaux, 
+                offrant des services rapides, sécurisés et abordables depuis plus de 10 ans.
+            </p>
+            
+            <div class="mb-4">
+                <h4 class="text-malicash-green section-title mb-3">Notre Mission</h4>
+                <p class="text-muted">
+                    Faciliter les transferts d'argent à travers le monde en proposant des solutions 
+                    innovantes et accessibles à tous, en connectant les familles et les entreprises 
+                    au-delà des frontières.
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="text-malicash-green section-title mb-3">Nos Valeurs</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-check-circle check-icon me-3"></i>
+                                <span><strong>Fiabilité</strong> - Service constant et sûr</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-check-circle check-icon me-3"></i>
+                                <span><strong>Transparence</strong> - Tarifs clairs et honnêtes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-check-circle check-icon me-3"></i>
+                                <span><strong>Innovation</strong> - Technologies de pointe</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-check-circle check-icon me-3"></i>
+                                <span><strong>Service client</strong> - Support exceptionnel</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <!-- Image avec 6 personnes au lieu de 8 -->
+            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg" 
+            alt="Notre équipe MaliCash - 6 professionnels travaillant ensemble" 
+            class="img-fluid hero-image">
+        </div>
+    </div>
+
+    <!-- Section des caractéristiques -->
+    <div class="row mt-5 pt-5">
+        <div class="col-12 text-center mb-5">
+            <h3 class="display-6 fw-bold text-dark mb-3">Pourquoi choisir MaliCash ?</h3>
+            <p class="lead text-muted">Des services qui font la différence</p>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+            <div class="card about-card shadow h-100">
+                <div class="card-body text-center p-5">
+                    <div class="feature-icon bg-malicash-green text-white rounded-circle mb-4">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4 class="text-malicash-green mb-3">Présence Mondiale</h4>
+                    <p class="text-muted">
+                        Plus de 200 pays et territoires desservis à travers le monde. 
+                        Envoyez de l'argent partout, en toute simplicité.
+                    </p>
+                    <div class="mt-3">
+                        <small class="text-malicash-green fw-bold">200+ Destinations</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+            <div class="card about-card shadow h-100">
+                <div class="card-body text-center p-5">
+                    <div class="feature-icon bg-malicash-green text-white rounded-circle mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="text-malicash-green mb-3">Sécurité Maximale</h4>
+                    <p class="text-muted">
+                        Vos transactions sont protégées par les dernières technologies de sécurité 
+                        et conformes aux normes internationales.
+                    </p>
+                    <div class="mt-3">
+                        <small class="text-malicash-green fw-bold">Cryptage SSL 256-bit</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+            <div class="card about-card shadow h-100">
+                <div class="card-body text-center p-5">
+                    <div class="feature-icon bg-malicash-green text-white rounded-circle mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="text-malicash-green mb-3">Support 24/7</h4>
+                    <p class="text-muted">
+                        Notre équipe d'experts est disponible 24h/24 et 7j/7 pour vous accompagner 
+                        dans toutes vos transactions.
+                    </p>
+                    <div class="mt-3">
+                        <small class="text-malicash-green fw-bold">Assistance Multilingue</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section statistiques -->
+    <div class="row mt-5 pt-5 bg-light rounded-4 p-5">
+        <div class="col-12 text-center mb-4">
+            <h3 class="text-malicash-green mb-3">MaliCash en chiffres</h3>
+        </div>
+        <div class="col-md-3 text-center mb-3">
+            <h2 class="text-malicash-green fw-bold">10+</h2>
+            <p class="text-muted">Années d'expérience</p>
+        </div>
+        <div class="col-md-3 text-center mb-3">
+            <h2 class="text-malicash-green fw-bold">1M+</h2>
+            <p class="text-muted">Clients satisfaits</p>
+        </div>
+        <div class="col-md-3 text-center mb-3">
+            <h2 class="text-malicash-green fw-bold">200+</h2>
+            <p class="text-muted">Pays desservis</p>
+        </div>
+        <div class="col-md-3 text-center mb-3">
+            <h2 class="text-malicash-green fw-bold">24/7</h2>
+            <p class="text-muted">Support client</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <h2 class="mb-4">À propos de MaliCash</h2>
+            <p class="lead mb-4">MaliCash est votre partenaire de confiance pour les transferts d'argent internationaux, offrant des services rapides, sécurisés et abordables.</p>
+            
+            <h4 class="mb-3">Notre Mission</h4>
+            <p>Faciliter les transferts d'argent à travers le monde en proposant des solutions innovantes et accessibles à tous.</p>
+            
+            <h4 class="mb-3">Nos Valeurs</h4>
+            <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Fiabilité</li>
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Transparence</li>
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Innovation</li>
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Service client</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" alt="Notre équipe" class="img-fluid rounded-4 shadow">
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Présence Mondiale</h4>
+                    <p>Plus de 200 pays et territoires desservis à travers le monde.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Sécurité Maximale</h4>
+                    <p>Vos transactions sont protégées par les dernières technologies de sécurité.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>Support 24/7</h4>
+                    <p>Notre équipe est disponible 24h/24 et 7j/7 pour vous assister.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% endcomment %}

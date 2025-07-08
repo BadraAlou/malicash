@@ -1,0 +1,663 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:'fr' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - MaliCash{% else %}MaliCash - Transfert d'argent{% endif %}</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-D4YEvXJ8uHg5yDyX04zkZdiAGbnO1GZNVXE7AhW+dAcCzSk/yLkYgcmI+Zr3/9LaA4TcZ06XLkGy12j5Hw/7lQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    {% comment %} <header class="sticky-top"> {% endcomment %}
+        {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-warning py-2">
+            <div class="container">
+                <a class="navbar-brand fw-bold animated-brand" href="{% url 'home' %}">MaliCash</a>
+                
+                <button class="navbar-toggler animated-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'calculator' %}">{% trans "Tarifs et frais" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'agents_page' %}">{% trans "Nos agents" %}</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'transfer_history' %}">
+                                <i class="fas fa-history me-1"></i>{% trans "Voir l'historique" %}
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'faq' %}">{% trans "Aide" %}</a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="navbar-nav">
+                        <!-- Dropdown langue -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle animated-nav-link" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span role="img" aria-label="Globe">🌐</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end animated-dropdown" aria-labelledby="languageDropdown">
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=fr">🇫🇷 Français</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=en">🇺🇸 English</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=es">🇪🇸 Español</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=zh-hans">🇨🇳 中文</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=ar">🇸🇦 العربية</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=ru">🇷🇺 Русский</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=sn">🇲🇱 Soninké</a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=bm">🇲🇱 Bambara</a></li>
+                            </ul>
+                        </li>
+                        
+                        {% if user.is_authenticated %}
+                        <!-- Dropdown utilisateur -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle animated-nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i>{{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end animated-dropdown" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item animated-dropdown-item" href="{% url 'profile' %}">
+                                    <i class="fas fa-user me-2"></i>{% trans "Mon profil" %}
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="{% url 'transfer_history' %}">
+                                    <i class="fas fa-history me-2"></i>{% trans "Voir l'historique" %}
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{% url 'logout' %}" method="post" style="display: inline; width: 100%;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="dropdown-item animated-dropdown-item w-100 text-start">
+                                            <i class="fas fa-sign-out-alt me-2"></i>{% trans "Déconnexion" %}
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'login' %}">{% trans "Connexion" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-dark btn-sm ms-2 animated-button" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
+                        </li>
+                        {% endif %}
+                        
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="#innovations">{% trans "Nos innovations" %}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> {% endcomment %}
+
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-warning py-2 animated-navbar"> {% endcomment %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning py-2 animated-navbar" id="main-nav">
+        <div class="container">
+            <a class="navbar-brand  animated-brand" href="{% url 'home' %}">
+                {% comment %} <i class="fas fa-wallet brand-icon me-2"></i> {% endcomment %}
+                <img src="{% static 'img/logo.jpg' %}" alt="logo" style="width: 50px; height: 50px">
+                <span class="brand-text">MaliCash</span>
+            </a>
+            
+            <button class="navbar-toggler animated-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link animated-nav-link" href="{% url 'calculator' %}">
+                            <i class="fas fa-calculator nav-icon me-1"></i>
+                            <span>{% trans "Tarifs et frais" %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link animated-nav-link" href="{% url 'agents_page' %}">
+                            <i class="fas fa-users nav-icon me-1"></i>
+                            <span>{% trans "Nos agents" %}</span>
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link animated-nav-link" href="{% url 'transfer_history' %}">
+                            <i class="fas fa-history nav-icon me-1"></i>
+                            <span>{% trans "Voir l'historique" %}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link animated-nav-link" href="#innovations">
+                            <i class="fas fa-lightbulb nav-icon me-1"></i>
+                            <span>{% trans "Nos innovations" %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link animated-nav-link" href="{% url 'faq' %}">
+                            <i class="fas fa-question-circle nav-icon me-1"></i>
+                            <span>{% trans "Aide" %}</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <!-- Dropdown langue -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle animated-nav-link language-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="globe-icon" role="img" aria-label="Globe">🌐</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end animated-dropdown" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=fr">
+                                <span class="flag-emoji">🇫🇷</span> Français
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=en">
+                                <span class="flag-emoji">🇺🇸</span> English
+                            </a></li>
+                            {% comment %} <li><a class="dropdown-item animated-dropdown-item" href="/?language=es">
+                                <span class="flag-emoji">🇪🇸</span> Español
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=zh-hans">
+                                <span class="flag-emoji">🇨🇳</span> 中文
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=ar">
+                                <span class="flag-emoji">🇸🇦</span> العربية
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=ru">
+                                <span class="flag-emoji">🇷🇺</span> Русский
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=sn">
+                                <span class="flag-emoji">🇲🇱</span> Soninké
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="/?language=bm">
+                                <span class="flag-emoji">🇲🇱</span> Bambara
+                            </a></li> {% endcomment %}
+                        </ul>
+                    </li>
+                    
+                    {% if user.is_authenticated %}
+                    <!-- Dropdown utilisateur -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle animated-nav-link user-dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle user-icon me-1"></i>
+                            <span>{{ user.username }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end animated-dropdown" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item animated-dropdown-item" href="{% url 'profile' %}">
+                                <i class="fas fa-user me-2"></i>{% trans "Mon profil" %}
+                            </a></li>
+                            <li><a class="dropdown-item animated-dropdown-item" href="{% url 'transfer_history' %}">
+                                <i class="fas fa-history me-2"></i>{% trans "Voir l'historique" %}
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="{% url 'logout' %}" method="post" style="display: inline; width: 100%;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item animated-dropdown-item w-100 text-start logout-btn">
+                                        <i class="fas fa-sign-out-alt me-2"></i>{% trans "Déconnexion" %}
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link animated-nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt nav-icon me-1"></i>
+                            <span>{% trans "Connexion" %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-dark btn-sm ms-2 animated-button register-btn" href="{% url 'register' %}">
+                            <i class="fas fa-user-plus me-1"></i>
+                            <span>{% trans "S'inscrire" %}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+
+        {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-warning py-2 animated-navbar">
+            <div class="container">
+                <a class="navbar-brand fw-bold animated-brand" href="{% url 'home' %}">
+                    <i class="fas fa-wallet brand-icon me-2"></i>
+                    <span class="brand-text">MaliCash</span>
+                </a>
+                
+                <button class="navbar-toggler animated-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'calculator' %}">
+                                <i class="fas fa-calculator nav-icon me-1"></i>
+                                <span>{% trans "Tarifs et frais" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'agents_page' %}">
+                                <i class="fas fa-users nav-icon me-1"></i>
+                                <span>{% trans "Nos agents" %}</span>
+                            </a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'transfer_history' %}">
+                                <i class="fas fa-history nav-icon me-1"></i>
+                                <span>{% trans "Voir l'historique" %}</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="#innovations">
+                                <i class="fas fa-lightbulb nav-icon me-1"></i>
+                                <span>{% trans "Nos innovations" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'faq' %}">
+                                <i class="fas fa-question-circle nav-icon me-1"></i>
+                                <span>{% trans "Aide" %}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="navbar-nav">
+                        <!-- Dropdown langue -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle animated-nav-link language-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="globe-icon" role="img" aria-label="Globe">🌐</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end animated-dropdown" aria-labelledby="languageDropdown">
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=fr">
+                                    <span class="flag-emoji">🇫🇷</span> Français
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=en">
+                                    <span class="flag-emoji">🇺🇸</span> English
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=es">
+                                    <span class="flag-emoji">🇪🇸</span> Español
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=zh-hans">
+                                    <span class="flag-emoji">🇨🇳</span> 中文
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=ar">
+                                    <span class="flag-emoji">🇸🇦</span> العربية
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=ru">
+                                    <span class="flag-emoji">🇷🇺</span> Русский
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=sn">
+                                    <span class="flag-emoji">🇲🇱</span> Soninké
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="/?language=bm">
+                                    <span class="flag-emoji">🇲🇱</span> Bambara
+                                </a></li>
+                            </ul>
+                        </li>
+                        
+                        {% if user.is_authenticated %}
+                        <!-- Dropdown utilisateur -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle animated-nav-link user-dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle user-icon me-1"></i>
+                                <span>{{ user.username }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end animated-dropdown" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item animated-dropdown-item" href="{% url 'profile' %}">
+                                    <i class="fas fa-user me-2"></i>{% trans "Mon profil" %}
+                                </a></li>
+                                <li><a class="dropdown-item animated-dropdown-item" href="{% url 'transfer_history' %}">
+                                    <i class="fas fa-history me-2"></i>{% trans "Voir l'historique" %}
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{% url 'logout' %}" method="post" style="display: inline; width: 100%;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="dropdown-item animated-dropdown-item w-100 text-start logout-btn">
+                                            <i class="fas fa-sign-out-alt me-2"></i>{% trans "Déconnexion" %}
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link animated-nav-link" href="{% url 'login' %}">
+                                <i class="fas fa-sign-in-alt nav-icon me-1"></i>
+                                <span>{% trans "Connexion" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-dark btn-sm ms-2 animated-button register-btn" href="{% url 'register' %}">
+                                <i class="fas fa-user-plus me-1"></i>
+                                <span>{% trans "S'inscrire" %}</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav> {% endcomment %}
+    
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    {% comment %} <main>
+        {% block content %}{% endblock %}
+    </main> {% endcomment %}
+
+    <!-- Footer -->
+    <footer class="footer-animated py-2">
+    <div class="container footer-content">
+        <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h5 class="mb-3 footer-title">{% trans "MaliCash" %}</h5>
+                <p class="animated-text">{% trans "Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à moindre coût." %}</p>
+                <div class="d-flex justify-content-center justify-content-md-start mt-3">
+                    <a href="https://www.facebook.com/contactmalicash@gmail.com" target="_blank" class="footer-social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@mali.cash98" target="_blank" class="footer-social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.snapchat.com/add/mali_cash2025" target="_blank" class="footer-social-icon">
+                        <i class="fab fa-snapchat-ghost"></i>
+                    </a>
+                </div>
+                {% comment %} <div class="d-flex justify-content-center justify-content-md-start mt-3">
+                    <a href="#" class="footer-social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>{% endcomment %}
+            </div> 
+
+            <div class="col-md-2 mb-4 mb-md-0">
+                <h5 class="mb-3 footer-title">{% trans "Liens utiles" %}</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="{% url 'home' %}" class="footer-link">
+                            <i class="fas fa-home me-2"></i>{% trans "Accueil" %}
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'about' %}" class="footer-link">
+                            <i class="fas fa-info-circle me-2"></i>{% trans "À propos" %}
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'services' %}" class="footer-link">
+                            <i class="fas fa-cogs me-2"></i>{% trans "Services" %}
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'contact' %}" class="footer-link">
+                            <i class="fas fa-envelope me-2"></i>{% trans "Contact" %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-2 mb-4 mb-md-0">
+                <h5 class="mb-3 footer-title">{% trans "Support" %}</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="{% url 'faq' %}" class="footer-link">
+                            <i class="fas fa-question-circle me-2"></i>{% trans "FAQ" %}
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'track_transfer' %}" class="footer-link">
+                            <i class="fas fa-search me-2"></i>{% trans "Suivi" %}
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-headset me-2"></i>{% trans "Support" %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h5 class="mb-3 footer-title">{% trans "Contact" %}</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2 footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i> {% trans "Bamako, Mali" %}
+                    </li>
+                    <li class="mb-2 footer-contact-item">
+                        <i class="fas fa-phone"></i> +223 96 73 53 53
+                    </li>
+                    <li class="mb-2 footer-contact-item">
+                        <i class="fas fa-envelope"></i> contactmalicash@gmail.com
+                    </li>
+                    <li class="mb-2 footer-contact-item">
+                        <i class="fas fa-globe"></i>site web: www.mali-cash.com
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.3);">
+        
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <p class="mb-0 animated-text">© 2025 {% trans "MaliCash" %}. {% trans "Tous droits réservés" %}.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="{% url 'terms' %}" class="footer-link me-3">
+                    <i class="fas fa-file-contract me-1"></i>{% trans "Conditions d'utilisation" %}
+                </a>
+                <a href="{% url 'privacy' %}" class="footer-link">
+                    <i class="fas fa-shield-alt me-1"></i>{% trans "Politique de confidentialité" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    {% comment %} <footer class="bg-dark text-white py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">{% trans "MaliCash" %}</h5>
+                    <p>{% trans "Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à moindre coût." %}</p>
+                    <div class="d-flex mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">{% trans "Liens utiles" %}</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-white">{% trans "Accueil" %}</a></li>
+                        <li class="mb-2"><a href="{% url 'about' %}" class="text-white">{% trans "À propos" %}</a></li>
+                        <li class="mb-2"><a href="{% url 'services' %}" class="text-white">{% trans "Services" %}</a></li>
+                        <li class="mb-2"><a href="{% url 'contact' %}" class="text-white">{% trans "Contact" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">{% trans "Support" %}</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'faq' %}" class="text-white">{% trans "FAQ" %}</a></li>
+                        <li class="mb-2"><a href="{% url 'track_transfer' %}" class="text-white">{% trans "Suivi" %}</a></li>
+                        
+                        <li class="mb-2"><a href="#" class="text-white">{% trans "Support" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">{% trans "Contact" %}</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> {% trans "Bamako, Mali" %}</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +223 96 73 53 53</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> contactmalicash@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">© 2025 {% trans "MaliCash" %}. {% trans "Tous droits réservés" %}.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="{% url 'terms' %}" class="text-white me-3">{% trans "Conditions d'utilisation" %}</a>
+                    <a href="{% url 'privacy' %}" class="text-white">{% trans "Politique de confidentialité" %}</a>
+                </div>
+            </div>
+        </div>
+    </footer> {% endcomment %}
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+    
+    <!-- Custom JavaScript -->
+    {% comment %} <script src="/static/js/main.js"></script> {% endcomment %}
+    
+    {% comment %} {% block extra_js %}{% endblock %} {% endcomment %}
+    <script>
+// Fonction pour les instructions iOS
+function showIOSInstructions() {
+    // Animation de l'alerte
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-info alert-dismissible fade show position-fixed';
+    alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; max-width: 400px; animation: slideInFromRight 0.5s ease-out;';
+    alertDiv.innerHTML = `
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h6><i class="fab fa-apple me-2"></i>Installation iOS</h6>
+        <p class="mb-2">Pour installer l'app iOS :</p>
+        <ol class="mb-2">
+            <li>Ouvrez ce lien sur votre iPhone</li>
+            <li>Installez TestFlight depuis l'App Store</li>
+            <li>Utilisez le code d'invitation</li>
+        </ol>
+        <small>Contactez-nous à <strong>contact@malicash.ml</strong> pour recevoir le code.</small>
+    `;
+    document.body.appendChild(alertDiv);
+    
+    // Supprimer automatiquement après 10 secondes
+    setTimeout(() => {
+        if (alertDiv.parentNode) {
+            alertDiv.remove();
+        }
+    }, 10000);
+}
+
+// Animation au scroll
+window.addEventListener('scroll', function() {
+    const elements = document.querySelectorAll('.animated-on-scroll');
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('animate');
+        }
+    });
+});
+
+// Animation des boutons au clic
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.animated-button, .animated-store-button, .animated-download-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Effet de ripple
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255,255,255,0.5);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// CSS pour l'animation ripple
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>

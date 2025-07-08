@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Historique des transferts</h2>
+                    
+                    {% if transfers %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Référence</th>
+                                        <th>Date</th>
+                                        <th>Destinataire</th>
+                                        <th>Montant</th>
+                                        <th>Destination</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for transfer in transfers %}
+                                        <tr>
+                                            <td>{{ transfer.reference|default:"N/A" }}</td>
+                                            <td>{{ transfer.created_at|date:"d/m/Y"|default:"N/A" }}</td>
+                                            <td>{{ transfer.receiver_name|default:"Inconnu" }}</td>
+                                            <td>{{ transfer.amount|default:0 }} {{ transfer.from_currency.code|default:"N/A" }}</td>
+                                            <td>{{ transfer.to_country.name|default:"Inconnue" }}</td>
+                                            <td>
+                                                <span class="badge bg-{{ transfer.status|yesno:'success,warning,danger' }}">
+                                                    {{ transfer.get_status_display|default:transfer.status|default:"Inconnu" }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'transfer_detail' transfer.reference %}" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-exchange-alt fa-4x text-muted mb-3"></i>
+                            <h4>Aucun transfert trouvé</h4>
+                            <p class="text-muted">Vous n'avez pas encore effectué de transfert</p>
+                            <a href="{% url 'transfer_money' %}" class="btn btn-primary mt-2">
+                                <i class="fas fa-paper-plane me-2"></i>Envoyer de l'argent
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Historique des transferts</h2>
+                    
+                    {% if transfers %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Référence</th>
+                                        <th>Date</th>
+                                        <th>Destinataire</th>
+                                        <th>Montant</th>
+                                        <th>Destination</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for transfer in transfers %}
+                                        <tr>
+                                            <td>{{ transfer.reference }}</td>
+                                            <td>{{ transfer.created_at|date:"d/m/Y" }}</td>
+                                            <td>{{ transfer.receiver_name }}</td>
+                                            <td>{{ transfer.amount }} {{ transfer.from_currency.code }}</td>
+                                            <td>{{ transfer.to_country.name }}</td>
+                                            <td>
+                                                <span class="badge bg-{{ transfer.status|yesno:'success,warning,danger' }}">
+                                                    {{ transfer.get_status_display }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'transfer_detail' transfer.reference %}" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-exchange-alt fa-4x text-muted mb-3"></i>
+                            <h4>Aucun transfert trouvé</h4>
+                            <p class="text-muted">Vous n'avez pas encore effectué de transfert</p>
+                            <a href="{% url 'transfer_money' %}" class="btn btn-primary mt-2">
+                                <i class="fas fa-paper-plane me-2"></i>Envoyer de l'argent
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% endcomment %}

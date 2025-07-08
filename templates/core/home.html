@@ -1,0 +1,1429 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+<!-- Section Hero corrigée -->
+<section div class="container-fluid p-0" style="background-color: rgb(9, 152, 49); min-height: 100vh;">
+    <div class="row align-items-center h-100">
+        <!-- Texte et formulaire à gauche -->
+        <div class="col-md-6 p-5">
+            <h1 class="display-4 mb-4 text-white fw-bold" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+                Bienvenue sur Malicash Transert à la Malienne!
+            </h1>
+            
+            <p class="lead mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                Envoyez de l'argent à l'étranger rapidement et facilement.
+            </p>
+            
+            <p class="mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                Rejoignez les millions d'utilisateurs qui nous font confiance depuis des années pour leurs transferts d'argent.
+            </p>
+            
+            <p class="mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                Envoyez de l'argent en ligne à vos proches en quelques instants avec MaliCash. Avec plus de 200 pays et territoires couverts, les transferts d'argent internationaux n'ont jamais été aussi simples.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mb-4">
+                <a href="{% url 'transfer_money' %}" class="btn btn-light btn-lg text-success fw-bold action-button">
+                    <i class="fas fa-paper-plane me-2"></i>Envoyer maintenant
+                </a>
+                <a href="{% url 'track_transfer' %}" class="btn btn-outline-light btn-lg action-button">
+                    <i class="fas fa-search me-2"></i>Suivre un transfert
+                </a>
+            </div>
+
+            <p class="text-white mt-4" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
+                Intelligence. Sécurité. Ensemble. Apprenez comment #BeFraudSmart
+            </p>
+        </div>
+
+        <!-- Image à droite -->
+        <div class="col-md-6 p-0 position-relative" style="background-color: rgb(9, 152, 49); min-height: 100vh;">
+            <img src="{% static 'img/femm-transfert.jpg' %}" 
+            alt="Transfert avec MaliCash" 
+            class="img-fluid position-absolute hero-image" 
+            style="object-fit: cover; 
+                clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); 
+                top: 0; 
+                left: 0; 
+                width: 120%; 
+                height: 100%;">
+        </div>
+    </div>
+</div>
+</section>
+
+
+<section class="currencies-section py-5">
+    <div class="container-fluid">
+        <div class="text-center mb-5">
+            <h2 class="section-title">
+                <i class="fas fa-globe-americas me-3"></i>
+                Devises par Pays
+            </h2>
+            <p class="section-subtitle">Tous les taux sont exprimés en Franc CFA (XOF) - Notre devise de référence</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="currencies-grid">
+                    
+                    <!-- Mali (Devise de référence) -->
+                    <div class="currency-card reference-currency" data-aos="fade-up" data-aos-delay="50">
+                        <div class="currency-flag">
+                            <span class="fi fi-ml flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Mali 🏠</h5>
+                            <div class="currency-details">
+                                <span class="currency-code reference">XOF</span>
+                                <span class="currency-name">Franc CFA BCEAO</span>
+                            </div>
+                            <div class="currency-rate reference-rate">
+                                <small><strong>Devise de référence</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- États-Unis -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="currency-flag">
+                            <span class="fi fi-us flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">États-Unis</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">USD</span>
+                                <span class="currency-name">Dollar américain</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 USD = <strong>600 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Euro (France, Espagne) -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="currency-flag">
+                            <span class="fi fi-fr flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">France, Espagne</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">EUR</span>
+                                <span class="currency-name">Euro</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 EUR = <strong>655 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gabon, Cameroun, Guinée Équatoriale -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="currency-flag">
+                            <span class="fi fi-ga flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Gabon, Cameroun, Guinée Éq.</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">XAF</span>
+                                <span class="currency-name">Franc CFA BEAC</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 XAF = <strong>1 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guinée -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="currency-flag">
+                            <span class="fi fi-gn flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Guinée</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">GNF</span>
+                                <span class="currency-name">Franc guinéen</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>100 GNF = <strong>6.7 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Canada -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="currency-flag">
+                            <span class="fi fi-ca flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Canada</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">CAD</span>
+                                <span class="currency-name">Dollar canadien</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 CAD = <strong>445 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Burkina Faso, Bénin, Niger, Togo -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="currency-flag">
+                            <span class="fi fi-bf flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Burkina Faso, Bénin, Niger, Togo</h5>
+                            <div class="currency-details">
+                                <span class="currency-code same-currency">XOF</span>
+                                <span class="currency-name">Franc CFA BCEAO</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 XOF = <strong>1 XOF</strong> ✓</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="currency-flag">
+                            <span class="fi fi-tr flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Turquie</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">TRY</span>
+                                <span class="currency-name">Lire turque</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 TRY = <strong>30 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Maroc -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="currency-flag">
+                            <span class="fi fi-ma flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Maroc</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">MAD</span>
+                                <span class="currency-name">Dirham marocain</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 MAD = <strong>60.6 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tunisie -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="450">
+                        <div class="currency-flag">
+                            <span class="fi fi-tn flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Tunisie</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">TND</span>
+                                <span class="currency-name">Dinar tunisien</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 TND = <strong>204.7 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chine -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="currency-flag">
+                            <span class="fi fi-cn flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Chine</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">CNY</span>
+                                <span class="currency-name">Yuan chinois</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>1 CNY = <strong>83.3 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Japon -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="550">
+                        <div class="currency-flag">
+                            <span class="fi fi-jp flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Japon</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">JPY</span>
+                                <span class="currency-name">Yen japonais</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>100 JPY = <strong>400 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Russie -->
+                    <div class="currency-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="currency-flag">
+                            <span class="fi fi-ru flag-icon"></span>
+                        </div>
+                        <div class="currency-info">
+                            <h5 class="country-name">Russie</h5>
+                            <div class="currency-details">
+                                <span class="currency-code">RUB</span>
+                                <span class="currency-name">Rouble russe</span>
+                            </div>
+                            <div class="currency-rate">
+                                <small>10 RUB = <strong>63.2 XOF</strong></small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Note explicative -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="exchange-note">
+                    <div class="alert alert-info d-flex align-items-center">
+                        <i class="fas fa-info-circle me-3"></i>
+                        <div>
+                            <strong>Note :</strong> Tous les taux de change sont exprimés en Franc CFA (XOF), 
+                            la devise officielle du Mali où se trouve notre siège social. 
+                            Les taux sont mis à jour quotidiennement et peuvent varier selon les conditions du marché.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Nos Services</h2>
+        <p class="text-muted">Des solutions complètes pour vos besoins de transfert d'argent</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>Transfert d'Argent International</h4>
+                    <p>Envoyez de l'argent à vos proches partout dans le monde en quelques clics.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transferts instantanés</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Taux de change compétitifs</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Frais transparents</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Envoyer maintenant</a>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} <div class="container py-5">
+            <div class="row"> {% endcomment %}
+                <div class="col-md-6">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>{% trans "Transfert Mobile Money" %}</h4>
+                            <p>{% trans "Envoyez de l'argent directement vers un portefeuille mobile via MaliCash. Une confirmation de l'admin est requise en raison des frais." %}</p>
+                            <ul class="list-unstyled mt-3">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Orange Money" %}</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Wave" %}</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{% trans "Moov Money" %}</li>
+                            </ul>
+                            <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">{% trans "Effectuer un transfert" %}</a>
+                            {% comment %} <h5 class="mt-4"></h5> {% endcomment %}
+                            <p class="text-muted small">{% trans "Entrez le numéro du destinataire. Le transfert sera soumis à l'approbation de l'admin." %}</p>
+                            <p class="text-muted mt-2 small">{% trans "Note : Assurez-vous que le numéro est valide et associé à un portefeuille mobile compatible (Orange Money, Wave, Moov Money)." %}</p>
+                        </div>
+                    </div>
+                </div>
+            {% comment %} </div>
+        </div> {% endcomment %}
+
+        {% comment %} <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Transfert Mobile Money</h4>
+                    <p>Envoyez de l'argent directement vers un portefeuille mobile.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Orange Money</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Wave</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Moov Money</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Découvrir</a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card shadow p-4 rounded-4 border-0 animate__animated animate__fadeInUp" style="min-height: 100%;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{% static 'img/livreur-moto.png' %}" alt="Agent en livraison" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Livraison à Domicile</h5>
+                            <small class="text-muted">Par agent MaliCash</small>
+                        </div>
+                    </div>
+
+                    <p class="mb-3">
+                        Vous avez une dificulté de déplacement  ?  
+                        Nous envoyons un agent jusqu’à votre domicile pour :
+                    </p>
+                    <ul class="list-unstyled mb-4">
+                        <li>✅ Vous remettre l'argent envoyé par un proche</li>
+                        <li>✅ Vous aider à envoyer de l'argent depuis chez vous</li>
+                        <li>✅ Vous assister pour tout besoin de transfert</li>
+                    </ul>
+
+                    <a href="https://wa.me/22369535415" class="btn btn-custom-yellow fw-bold w-100" style="background-color: #996500; border-color: #996500; color: white;">
+                        <i class="fas fa-motorcycle me-2"></i>Contactez l'agence pour vos besoins
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <div class="feature-icon bg-custom-yellow text-white rounded-circle mb-3" style="background-color: #996500 !important;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Transfert Bancaire</h4>
+                    <p>Envoyez votre argent directement sur votre compte bancaire via MaliCash. Une fois le transfert effectué vers MaliCash, nous le transférons facilement sur les comptes de vos clients dans n'importe quelle banque.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transfert sécurisé vers les comptes bancaires</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Compatibilité avec toutes les banques</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Processus rapide et fiable</li>
+                    </ul>
+                    <a href="{% url 'transfer_money' %}" class="btn btn-custom-yellow mt-3" style="background-color: #996500; border-color: #996500; color: white;">Transférer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<section class="faq py-5">
+    <div class="container-fluid px-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Questions fréquentes</h2>
+            <p class="text-muted">Trouvez rapidement les réponses à vos questions</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="accordion" id="faqAccordion">
+                    <!-- Question 1 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Comment envoyer de l'argent vers un compte bancaire ?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Pour envoyer de l'argent vers un compte bancaire :</p>
+                                <ol>
+                                    <li>Créez votre compte MaliCash</li>
+                                    <li>Sélectionnez "Transfert vers compte bancaire"</li>
+                                    <li>Entrez les informations du destinataire (nom, IBAN, BIC)</li>
+                                    <li>Choisissez votre méthode de paiement</li>
+                                    <li>Confirmez et payez - c'est tout !</li>
+                                </ol>
+                                <p>Le transfert est généralement traité en 1-3 jours ouvrables.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Comment envoyer de l'argent depuis une agence ?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Pour envoyer depuis notre agence de Bacodjicoroni :</p>
+                                <ul>
+                                    <li>Rendez-vous à notre agence avec une pièce d'identité</li>
+                                    <li>Remplissez le formulaire de transfert</li>
+                                    <li>Fournissez les informations du destinataire</li>
+                                    <li>Payez en espèces ou par carte</li>
+                                    <li>Recevez votre reçu avec le numéro de suivi</li>
+                                </ul>
+                                <p><strong>Adresse :</strong> Bacodjicoroni, Bamako, Mali<br>
+                                <strong>Horaires :</strong> Lun-Ven 8h-18h, Sam 9h-15h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Comment envoyer de l'argent via l'application mobile ?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Avec notre application mobile MaliCash :</p>
+                                <ol>
+                                    <li>Téléchargez l'app MaliCash sur votre smartphone</li>
+                                    <li>Créez votre compte et vérifiez votre identité</li>
+                                    <li>Ajoutez vos méthodes de paiement</li>
+                                    <li>Sélectionnez le destinataire ou ajoutez-en un nouveau</li>
+                                    <li>Entrez le montant et confirmez</li>
+                                </ol>
+                                <p>L'application est disponible sur iOS et Android. Transferts instantanés 24h/24 !</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Combien de temps pour recevoir un transfert ?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Les délais de réception dépendent de la méthode choisie :</p>
+                                <ul>
+                                    <li><strong>Retrait en espèces :</strong> Immédiat à quelques minutes</li>
+                                    <li><strong>Portefeuille mobile :</strong> Instantané</li>
+                                    <li><strong>Compte bancaire :</strong> 1-3 jours ouvrables</li>
+                                    <li><strong>Livraison à domicile :</strong> 2-4 heures</li>
+                                </ul>
+                                <p>Vous recevrez une notification dès que le transfert est disponible pour le destinataire.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Quel est le montant maximum d'un transfert international ?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Les limites de transfert varient selon votre statut :</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="limit-card">
+                                            <h6><i class="fas fa-user me-2"></i><strong>NKADJAGO :</strong></h6>
+                                            <ul>
+                                                <li>De 1 à 1 million Par mois </li>
+                                                {% comment %} <li>1 000€ par mois</li> {% endcomment %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="limit-card">
+                                            <h6><i class="fas fa-user-check me-2"></i><strong>Atchimma :</strong></h6>
+                                            <ul>
+                                                <li>De 1 million à 50 millions Par mois</li>
+                                                {% comment %} <li>1 000 000 de FCFA par mois</li> {% endcomment %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3"><i class="fas fa-phone me-2"></i>Pour des montants plus élevés, contactez notre service client au <strong>+223 96 73 53 53</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Quels sont les frais de transfert ?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p><i class="fas fa-calculator me-2"></i>Nos frais sont transparents et compétitifs :</p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th><i class="fas fa-money-bill-wave me-1"></i>Montant (XOF)</th>
+                                                <th><i class="fas fa-receipt me-1"></i>Frais (XOF)</th>
+                                                <th><i class="fas fa-clock me-1"></i>Délai</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1 - 65 500 XOF</td>
+                                                <td>1 958 XOF</td>
+                                                <td>Instantané</td>
+                                            </tr>
+                                            <tr>
+                                                <td>65 501 - 327 500 XOF</td>
+                                                <td>3 267 XOF</td>
+                                                <td>Instantané</td>
+                                            </tr>
+                                            <tr>
+                                                <td>327 501 XOF et plus</td>
+                                                <td>1% du montant</td>
+                                                <td>Dans les 24h</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="alert alert-info mt-3">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <strong>Aucun frais caché.</strong> Le taux de change est fixé au moment de la transaction.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Comment suivre mon transfert ?
+                            </button>
+                        </h2>
+                        <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Plusieurs moyens pour suivre votre transfert :</p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="tracking-method">
+                                            <i class="fas fa-mobile-alt fa-2x text-primary mb-2"></i>
+                                            <h6>Application mobile</h6>
+                                            <p>Suivi en temps réel avec notifications</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tracking-method">
+                                            <i class="fas fa-globe fa-2x text-success mb-2"></i>
+                                            <h6>Site web</h6>
+                                            <p>Entrez votre numéro de référence</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tracking-method">
+                                            <i class="fas fa-sms fa-2x text-warning mb-2"></i>
+                                            <h6>SMS</h6>
+                                            <p>Notifications automatiques</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                <div class="faq-icon me-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                Quels documents sont nécessaires ?
+                            </button>
+                        </h2>
+                        <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Documents requis selon le type de transfert :</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><i class="fas fa-user me-2"></i>Pour l'expéditeur :</h6>
+                                        <ul>
+                                            <li>Pièce d'identité valide</li>
+                                            <li>Justificatif de domicile</li>
+                                            <li>Coordonnées bancaires (si applicable)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><i class="fas fa-user-friends me-2"></i>Pour le destinataire :</h6>
+                                        <ul>
+                                            <li>Nom complet</li>
+                                            <li>Numéro de téléphone</li>
+                                            <li>Adresse complète</li>
+                                            <li>Pièce d'identité (pour retrait)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Section Innovations MaliCash -->
+<section class="py-5 bg-light" id="innovations">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 text-success">Ce que MaliCash apporte de nouveau</h2>
+        <div class="row g-4">
+        
+        <!-- 1. Transfert personnalisé -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Transferts personnalisés</h5>
+                <p>Des options flexibles pour les familles, entreprises ou transferts réguliers. MaliCash s’adapte à vos besoins.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 2. Cryptomonnaies -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Intégration de cryptomonnaies</h5>
+                <p>Envoyez de l'argent via Bitcoin, USDT et plus encore pour des transferts rapides et peu coûteux.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 3. Fidélité -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Programme de fidélité</h5>
+                <p>Gagnez des récompenses à chaque transaction avec notre système de points ou cashback.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 4. Application mobile -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Application mobile intuitive</h5>
+                <p>Suivi en temps réel, notifications personnalisées et assistance directe dans une seule appli.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 5. IA et sécurité -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Technologie de pointe</h5>
+                <p>Nous utilisons l’IA pour sécuriser les transactions et améliorer votre expérience utilisateur.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 6. Engagement communautaire -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Engagement communautaire</h5>
+                <p>MaliCash soutient des projets locaux et des initiatives sociales dans chaque région d’intervention.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 7. Plateforme éducative -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Plateforme éducative et financière</h5>
+                <p>Des ressources utiles sur la gestion de l’argent, l’épargne et l’investissement, pour nos clients.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 8. Microcrédit -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Solutions de microcrédit</h5>
+                <p>Des petits prêts accessibles pour démarrer un projet ou gérer une urgence.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- 9. Paiements flexibles -->
+        <div class="col-md-6">
+            <div class="card border-success h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">Options de paiement flexibles</h5>
+                <p>Carte bancaire, portefeuille électronique ou espèces : choisissez votre méthode préférée.</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Résumé -->
+        <div class="alert alert-success mt-5 text-center">
+        <strong>MaliCash</strong> révolutionne le transfert d’argent en alliant technologie, accessibilité et impact social.
+        </div>
+    </div>
+    </section>
+
+<!-- Rates and Calculator Section -->
+<!-- Section Tarifs et Taux de change - Version élargie -->
+<section class="rates-section py-5">
+    <div class="container-fluid">
+        <div class="text-center mb-5">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line me-3"></i>
+                Tarifs et Taux de change
+            </h2>
+            <p class="section-subtitle">Des frais transparents et des taux de change compétitifs</p>
+        </div>
+        
+        <div class="row">
+            <!-- Calculateur principal amélioré -->
+            <div class="col-lg-8 mb-4">
+                <div class="calculator-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-calculator me-2"></i>Calculez le montant à recevoir</h4>
+                        <small class="text-muted">Calcul automatique en temps réel</small>
+                    </div>
+                    <div class="card-body">
+                        <form class="calculator-form">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Montant</label>
+                                    <div class="input-group">
+                                        <input type="number" 
+                                        class="form-control amount-input" 
+                                        placeholder="0" 
+                                        id="amount"
+                                        min="1"
+                                        oninput="calculateAmountAuto()">
+                                        <span class="input-group-text currency-symbol" id="currencySymbol">XOF</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Devise d'envoi</label>
+                                    <select class="form-select currency-select" id="fromCurrency" onchange="updateCurrencySymbol(); calculateAmountAuto();">
+                                        <!-- Devises principales -->
+                                        <optgroup label="🌍 Devises Principales">
+                                            <option value="XOF" data-symbol="XOF" selected>XOF - Franc CFA BCEAO (Mali)</option>
+                                            <option value="EUR" data-symbol="€">EUR - Euro (France, Espagne)</option>
+                                            <option value="USD" data-symbol="$">USD - Dollar américain</option>
+                                            <option value="CAD" data-symbol="CAD">CAD - Dollar canadien</option>
+                                            <option value="GBP" data-symbol="£">GBP - Livre sterling</option>
+                                        </optgroup>
+                                        
+                                        <!-- Devises africaines -->
+                                        <optgroup label="🌍 Afrique">
+                                            <option value="XAF" data-symbol="XAF">XAF - Franc CFA BEAC (Gabon, Cameroun)</option>
+                                            <option value="GNF" data-symbol="GNF">GNF - Franc guinéen (Guinée)</option>
+                                            <option value="MAD" data-symbol="MAD">MAD - Dirham marocain (Maroc)</option>
+                                            <option value="TND" data-symbol="TND">TND - Dinar tunisien (Tunisie)</option>
+                                            <option value="DZD" data-symbol="DZD">DZD - Dinar algérien (Algérie)</option>
+                                            <option value="NGN" data-symbol="₦">NGN - Naira nigérian (Nigeria)</option>
+                                            <option value="GHS" data-symbol="GHS">GHS - Cedi ghanéen (Ghana)</option>
+                                            <option value="SLL" data-symbol="SLL">SLL - Leone (Sierra Leone)</option>
+                                        </optgroup>
+                                        
+                                        <!-- Autres devises -->
+                                        <optgroup label="🌏 Autres">
+                                            <option value="CNY" data-symbol="¥">CNY - Yuan chinois (Chine)</option>
+                                            <option value="JPY" data-symbol="¥">JPY - Yen japonais (Japon)</option>
+                                            <option value="CHF" data-symbol="CHF">CHF - Franc suisse (Suisse)</option>
+                                            <option value="AUD" data-symbol="AUD">AUD - Dollar australien</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Devise de réception</label>
+                                    <select class="form-select currency-select" id="toCurrency" onchange="calculateAmountAuto();">
+                                        <!-- Devises africaines prioritaires -->
+                                        <optgroup label="🎯 Destinations Populaires">
+                                            <option value="XOF" selected>XOF - Franc CFA BCEAO (Mali, Burkina Faso)</option>
+                                            <option value="XAF">XAF - Franc CFA BEAC (Gabon, Cameroun)</option>
+                                            <option value="GNF">GNF - Franc guinéen (Guinée)</option>
+                                            <option value="MAD">MAD - Dirham marocain (Maroc)</option>
+                                            <option value="TND">TND - Dinar tunisien (Tunisie)</option>
+                                        </optgroup>
+                                        
+                                        <!-- Toutes les autres devises -->
+                                        <optgroup label="🌍 Autres Destinations">
+                                            <option value="EUR">EUR - Euro (France, Espagne)</option>
+                                            <option value="USD">USD - Dollar américain</option>
+                                            <option value="CAD">CAD - Dollar canadien</option>
+                                            <option value="GBP">GBP - Livre sterling</option>
+                                            <option value="DZD">DZD - Dinar algérien (Algérie)</option>
+                                            <option value="NGN">NGN - Naira nigérian (Nigeria)</option>
+                                            <option value="GHS">GHS - Cedi ghanéen (Ghana)</option>
+                                            <option value="SLL">SLL - Leone (Sierra Leone)</option>
+                                            <option value="CNY">CNY - Yuan chinois (Chine)</option>
+                                            <option value="JPY">JPY - Yen japonais (Japon)</option>
+                                            <option value="CHF">CHF - Franc suisse (Suisse)</option>
+                                            <option value="AUD">AUD - Dollar australien</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Résultat du calcul automatique -->
+                        <div class="calculation-result mt-4" id="calculationResult" style="display: none;">
+                            <div class="result-card">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="result-item">
+                                            <div class="result-label">Montant envoyé</div>
+                                            <div class="result-value" id="sentAmount">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="result-item">
+                                            <div class="result-label">Frais</div>
+                                            <div class="result-value text-warning" id="fees">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="result-item">
+                                            <div class="result-label">Taux de change</div>
+                                            <div class="result-value" id="exchangeRate">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="result-item highlight">
+                                            <div class="result-label">Montant reçu</div>
+                                            <div class="result-value text-success" id="receivedAmount">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <p class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Calcul automatique basé sur les taux en temps réel. 
+                                <a href="#" class="text-primary">En savoir plus</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grille tarifaire organisée -->
+            <div class="col-lg-4 mb-4">
+                <div class="fees-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-receipt me-2"></i>Grille tarifaire</h4>
+                        <small class="text-muted">Frais en XOF (devise de référence)</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover fees-table">
+                                <thead>
+                                    <tr>
+                                        <th>Montant (XOF)</th>
+                                        <th>Frais</th>
+                                        <th>Délai</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td>1 - 65,500 XOF</td>
+                                        <td class="fee-amount">1,965 XOF</td>
+                                        <td><span class="badge bg-success">Instantané</span></td>
+                                    </tr>
+                                    <tr class="table-info">
+                                        <td>65,501 XOF - 327,500 XOF</td>
+                                        <td class="fee-amount">3,267 XOF</td>
+                                        <td><span class="badge bg-success">Instantané</span></td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td>327,501 XOF et plus</td>
+                                        <td class="fee-amount">1% du montant</td>
+                                        <td><span class="badge bg-warning">Dans les 24h</span></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-success mt-3">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <strong>Garantie transparence :</strong> Aucun frais caché. Le taux de change est fixé au moment de la transaction.
+                        </div>
+                        
+                        <!-- Avantages -->
+                        <div class="benefits-list mt-3">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Transferts sécurisés 24h/24
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Suivi en temps réel
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Support client multilingue
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Taux de change complets -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="exchange-rates-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4><i class="fas fa-sync-alt me-2"></i>Taux de change en temps réel</h4>
+                            <small class="text-muted">Tous les taux sont convertis vers le Franc CFA (XOF) - Devise de référence du Mali</small>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted">Dernière mise à jour: <span id="lastUpdate">-</span></small>
+                            <br>
+                            <button class="btn btn-sm btn-outline-primary" onclick="updateRates()">
+                                <i class="fas fa-refresh me-1"></i>Actualiser
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="rates-grid">
+                            <!-- Devises principales vers XOF -->
+                            <div class="rate-item featured">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ml"></span>
+                                    XOF → XOF
+                                </div>
+                                <div class="rate-value">1.0000</div>
+                                <div class="rate-change neutral">Référence</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-fr"></span>
+                                    EUR → XOF
+                                </div>
+                                <div class="rate-value">655.00</div>
+                                <div class="rate-change positive">+0.5%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-us"></span>
+                                    USD → XOF
+                                </div>
+                                <div class="rate-value">600.00</div>
+                                <div class="rate-change negative">-0.2%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ca"></span>
+                                    CAD → XOF
+                                </div>
+                                <div class="rate-value">445.00</div>
+                                <div class="rate-change positive">+0.3%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-gb"></span>
+                                    GBP → XOF
+                                </div>
+                                <div class="rate-value">750.00</div>
+                                <div class="rate-change positive">+0.8%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ga"></span>
+                                    XAF → XOF
+                                </div>
+                                <div class="rate-value">1.0000</div>
+                                <div class="rate-change neutral">Parité</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-gn"></span>
+                                    GNF → XOF
+                                </div>
+                                <div class="rate-value">0.0667</div>
+                                <div class="rate-change positive">+1.2%</div>
+                            </div>
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-tr"></span>
+                                    TRY → XOF
+                                </div>
+                                <div class="rate-value">30.00</div>
+                                <div class="rate-change positive">+0.2%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ma"></span>
+                                    MAD → XOF
+                                </div>
+                                <div class="rate-value">60.65</div>
+                                <div class="rate-change negative">-0.1%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-tn"></span>
+                                    TND → XOF
+                                </div>
+                                <div class="rate-value">204.69</div>
+                                <div class="rate-change positive">+0.4%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-dz"></span>
+                                    DZD → XOF
+                                </div>
+                                <div class="rate-value">4.48</div>
+                                <div class="rate-change negative">-0.3%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-ng"></span>
+                                    NGN → XOF
+                                </div>
+                                <div class="rate-value">0.39</div>
+                                <div class="rate-change positive">+2.1%</div>
+                            </div>
+                            
+                            <div class="rate-item">
+                                <div class="rate-pair">
+                                    <span class="fi fi-cn"></span>
+                                    CNY → XOF
+                                </div>
+                                <div class="rate-value">83.33</div>
+                                <div class="rate-change negative">-0.6%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Les taux affichés sont indicatifs et peuvent varier légèrement lors de la transaction.
+                                <br>
+                                <strong>Mali (XOF)</strong> est notre devise de référence pour tous les calculs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-malicash-green mb-3">Ce que disent nos clients</h2>
+            <p class="lead text-muted">Découvrez les expériences authentiques de nos utilisateurs satisfaits</p>
+            <div class="d-flex justify-content-center mb-4">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="ms-2 text-muted">4.9/5 basé sur 1000+ avis</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                    <div class="carousel-inner">
+                        {% if testimonials %}
+                            {% for testimonial in testimonials %}
+                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    <div class="card testimonial-card shadow-lg">
+                                        <div class="card-body text-center p-5">
+                                            <div class="testimonial-quote text-malicash-green mb-4">
+                                                <i class="fas fa-quote-left fa-3x"></i>
+                                            </div>
+                                            <div class="star-rating mb-3">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <p class="testimonial-text mb-4 text-dark">{{ testimonial.comment }}</p>
+                                            <div class="client-avatar">
+                                                {{ testimonial.name|first }}
+                                            </div>
+                                            <h5 class="mb-1 text-malicash-green">{{ testimonial.name }}</h5>
+                                            <p class="text-muted mb-0">
+                                                <i class="fas fa-map-marker-alt me-1"></i>{{ testimonial.location }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="carousel-item active">
+                                <div class="card testimonial-card shadow-lg">
+                                    <div class="card-body text-center p-5">
+                                        <div class="testimonial-quote text-malicash-green mb-4">
+                                            <i class="fas fa-quote-left fa-3x"></i>
+                                        </div>
+                                        <div class="star-rating mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="testimonial-text mb-4 text-dark">"MaliCash m'a permis d'envoyer de l'argent à ma famille en quelques minutes ! Le service est incroyablement rapide et fiable. Je recommande vivement cette plateforme."</p>
+                                        <div class="client-avatar">A</div>
+                                        <h5 class="mb-1 text-malicash-green">Aïssata Diallo</h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-1"></i>Bamako, Mali
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card testimonial-card shadow-lg">
+                                    <div class="card-body text-center p-5">
+                                        <div class="testimonial-quote text-malicash-green mb-4">
+                                            <i class="fas fa-quote-left fa-3x"></i>
+                                        </div>
+                                        <div class="star-rating mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="testimonial-text mb-4 text-dark">"Le service est rapide, sécurisé et facile à utiliser. Les frais sont transparents et les taux de change sont excellents. Une vraie révolution dans les transferts d'argent !"</p>
+                                        <div class="client-avatar">M</div>
+                                        <h5 class="mb-1 text-malicash-green">Moussa Touré</h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-1"></i>Paris, France
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card testimonial-card shadow-lg">
+                                    <div class="card-body text-center p-5">
+                                        <div class="testimonial-quote text-malicash-green mb-4">
+                                            <i class="fas fa-quote-left fa-3x"></i>
+                                        </div>
+                                        <div class="star-rating mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="testimonial-text mb-4 text-dark">"J'adore la simplicité de l'application MaliCash. Je peux envoyer de l'argent à ma famille à tout moment et de n'importe où. Interface intuitive et support client exceptionnel !"</p>
+                                        <div class="client-avatar">F</div>
+                                        <h5 class="mb-1 text-malicash-green">Fatoumata Camara</h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-1"></i>Dakar, Sénégal
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Contrôles du carousel -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Précédent</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Suivant</span>
+                    </button>
+                    
+                    <!-- Indicateurs -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" style="background-color: #166534;"></button>
+                        <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" style="background-color: #166534;"></button>
+                        <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2" style="background-color: #166534;"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download App Section -->
+<!-- Section Application Mobile -->
+<!-- Section Application Mobile en vert avec animations -->
+<section class="mobile-app-section py-5 mb-5">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <!-- Colonne texte et boutons -->
+            <div class="col-lg-6">
+                <div class="coming-soon-badge">
+                    <i class="fas fa-rocket me-2"></i>
+                    Bientôt disponible sur les stores !
+                </div>
+                
+                <h2 class="display-5 fw-bold mb-4 animated-title">
+                    {% trans "Téléchargez notre application mobile une fois prêt" %}
+                </h2>
+                <p class="lead mb-4 animated-text">
+                    {% trans "Envoyez de l'argent, suivez vos transferts et gérez votre compte où que vous soyez, à tout moment. L'application MaliCash sera bientôt disponible sur Google Play et App Store." %}
+                </p>
+                
+                <!-- Message d'information -->
+                <div class="feature-highlight mb-4">
+                    <h5 class="text-white mb-2">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Application en développement
+                    </h5>
+                    <p class="text-white-50 mb-0">
+                        Notre équipe travaille activement sur le développement de l'application mobile. 
+                        Elle sera disponible sur Google Play et App Store dans les prochaines semaines. 
+                        Et la version Android Bientôt InchaAllah, vous pouvez teste une fois prêt via le téléchargement direct.
+                    </p>
+                </div>
+                
+                <!-- Boutons des stores (désactivés) -->
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <button class="btn btn-light btn-lg store-button-disabled" disabled>
+                        <i class="fab fa-google-play me-2"></i>Google Play
+                    </button>
+                    <button class="btn btn-outline-light btn-lg store-button-disabled" disabled>
+                        <i class="fab fa-apple me-2"></i>App Store
+                    </button>
+                </div>
+                
+                <!-- Téléchargement direct -->
+                <div class="mt-4">
+                    <p class="text-white-50 mb-3">
+                        <i class="fas fa-download me-1 animated-icon"></i>
+                        {% trans "Téléchargement direct (version test)" %} :
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="/static/downloads/malicashapps.apk"
+                        download
+                        class="btn btn-sm animated-download-button">
+                        <i class="fab fa-android me-2"></i>
+                        <span>APK Android</span>
+                        <small class="d-block">Version 1.0.0 Beta</small>
+                        </a>
+                    </div>
+                    <small class="text-white-50 d-block mt-2">
+                        <i class="fas fa-shield-alt me-1"></i>
+                        Fichier sécurisé et testé • Taille: 25 MB
+                    </small>
+                </div>
+                
+                <!-- Fonctionnalités à venir -->
+                <div class="feature-highlight mt-4">
+                    <h6 class="text-white mb-2">Fonctionnalités de l'application :</h6>
+                    <div class="row">
+                        <div class="col-6">
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>Transferts rapides
+                            </small>
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>Suivi en temps réel
+                            </small>
+                        </div>
+                        <div class="col-6">
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>Notifications push
+                            </small>
+                            <small class="text-white-50 d-block">
+                                <i class="fas fa-check me-1 text-success"></i>Interface intuitive
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colonne image -->
+            <div class="col-lg-6">
+                <div class="mobile-image-container">
+                    <img src="https://images.pexels.com/photos/6347720/pexels-photo-6347720.jpeg"
+                    alt="MaliCash App - Bientôt disponible"
+                    class="img-fluid rounded-4 shadow animated-image"
+                    style="width: 100%; height: auto; max-height: 600px; object-fit: cover;">
+                    
+                    <!-- Badge "Bientôt" sur l'image -->
+                    <div style="position: absolute; top: 20px; right: 20px; background: linear-gradient(45deg, #fbbf24, #f59e0b); color: white; padding: 8px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; animation: pulse 2s infinite;">
+                        Bientôt !
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function showComingSoon(store) {
+    alert(`L'application MaliCash sera bientôt disponible sur ${store}. Restez connectés !`);
+}
+</script>
+{% endblock %}
+
+

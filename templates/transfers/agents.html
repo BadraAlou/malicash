@@ -1,0 +1,381 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">Notre équipe à Bacodjicoroni</h1>
+                <p class="lead">Des services professionnels pour tous vos besoins de transfert</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+
+        <!-- Chef d’équipe Marketing & Management -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-user-tie fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="card-title">Chef d'équipe</h5>
+                    <p class="card-text">Marketing & Management</p>
+                    <a href="mailto:direction@malicash.ml" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informatique & Système -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-dark bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-cogs fa-2x text-dark"></i>
+                    </div>
+                    <h5 class="card-title">Informatique</h5>
+                    <p class="card-text">Développement & Système</p>
+                    <a href="mailto:tech@malicash.ml" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comptabilité & Finances -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-chart-line fa-2x text-success"></i>
+                    </div>
+                    <h5 class="card-title">Comptabilité</h5>
+                    <p class="card-text">Suivi Financier</p>
+                    <a href="mailto:compta@malicash.ml" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trésorerie -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-secondary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-wallet fa-2x text-secondary"></i>
+                    </div>
+                    <h5 class="card-title">Trésorerie</h5>
+                    <p class="card-text">Gestion des fonds</p>
+                    <a href="mailto:tresor@malicash.ml" class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Digitale -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-bullhorn fa-2x text-info"></i>
+                    </div>
+                    <h5 class="card-title">Communication</h5>
+                    <p class="card-text">Digitale & Réseaux</p>
+                    <a href="tel:+22396735353" class="btn btn-outline-info btn-sm">
+                        <i class="fas fa-phone me-1"></i>Contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multimédia & Visuels -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-photo-video fa-2x text-danger"></i>
+                    </div>
+                    <h5 class="card-title">Multimédia</h5>
+                    <p class="card-text">Contenus & visuels</p>
+                    <a href="mailto:media@malicash.ml" class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Livraison (inchangé) -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-truck fa-2x text-warning"></i>
+                    </div>
+                    <h5 class="card-title">Livraison</h5>
+                    <p class="card-text">Service de livraison</p>
+                    <a href="mailto:malicashpro06@gmail.com" class="btn btn-outline-warning btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% comment %} <div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">Notre équipe à Bacodjicoroni</h1>
+                <p class="lead">Des services professionnels pour tous vos besoins de transfert</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services disponibles avec icônes -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-comments fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="card-title">Communication</h5>
+                    <p class="card-text">Support client et assistance</p>
+                    <a href="tel:+22396735353" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-phone me-1"></i>Contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-shield-alt fa-2x text-success"></i>
+                    </div>
+                    <h5 class="card-title">Sécurité</h5>
+                    <p class="card-text">Protection et sécurisation</p>
+                    <a href="mailto:security@malicash.ml" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-broom fa-2x text-info"></i>
+                    </div>
+                    <h5 class="card-title">Maintenance</h5>
+                    <p class="card-text">Entretien et nettoyage</p>
+                    <span class="badge bg-secondary">Service interne</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-truck fa-2x text-warning"></i>
+                    </div>
+                    <h5 class="card-title">Livraison</h5>
+                    <p class="card-text">Service de livraison</p>
+                    <a href="mailto:malicashpro06@gmail.com" class="btn btn-outline-warning btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <!-- Informations de l'agence -->
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-4">
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                        Localisation de l'agence
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Adresse</h5>
+                            <p class="text-muted">Bacodjicoroni, Bamako, Mali</p>
+                            
+                            <h5>Horaires</h5>
+                            <p class="text-muted">
+                                Lundi - Vendredi: 8h00 - 18h00<br>
+                                Samedi: 9h00 - 15h00<br>
+                                Dimanche: Fermé
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Contact principal</h5>
+                            <p class="text-muted">
+                                <i class="fas fa-phone text-primary me-2"></i>+223 96 73 53 53<br>
+                                <i class="fas fa-envelope text-primary me-2"></i>contactmalicash@gmail.com
+                            </p>
+                            
+                            <div class="mt-3">
+                                <a href="tel:+22396735353" class="btn btn-primary me-2">
+                                    <i class="fas fa-phone me-1"></i>Appeler
+                                </a>
+                                <a href="mailto:contactmalicash@gmail.com" class="btn btn-outline-primary">
+                                    <i class="fas fa-envelope me-1"></i>Email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Services disponibles</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Envoi d'argent international
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Réception d'argent
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Change de devises
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Conseil et assistance
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Suivi de transferts
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Nos agents MaliCash</h2>
+                    
+                    <div class="mb-4">
+                        <form method="GET" class="row g-3">
+                            <div class="col-md-4">
+                                <select name="country" class="form-select">
+                                    <option value="">Tous les pays</option>
+                                    {% for country in countries %}
+                                        <option value="{{ country.id }}" {% if selected_country.id == country.id %}selected{% endif %}>
+                                            {{ country.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="city" class="form-control" placeholder="Ville" value="{{ request.GET.city }}">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-search me-2"></i>Rechercher
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    {% if agents %}
+                        <div class="row g-4">
+                            {% for agent in agents %}
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ agent.name }}</h5>
+                                            <p class="card-text">
+                                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                                {{ agent.address }}, {{ agent.city }}
+                                            </p>
+                                            <p class="card-text">
+                                                <i class="fas fa-phone text-primary me-2"></i>
+                                                {{ agent.phone }}
+                                            </p>
+                                            {% if agent.email %}
+                                                <p class="card-text">
+                                                    <i class="fas fa-envelope text-primary me-2"></i>
+                                                    {{ agent.email }}
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-store-alt fa-3x text-muted mb-3"></i>
+                            <h4>Aucun agent trouvé</h4>
+                            <p class="text-muted">Essayez de modifier vos critères de recherche</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4">Carte des agents</h4>
+                    <div id="agentMap" style="height: 400px;" class="rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+<script>
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById('agentMap'), {
+            zoom: 2,
+            center: {lat: 0, lng: 0}
+        });
+
+        {% for agent in agents %}
+            new google.maps.Marker({
+                position: {lat: {{ agent.latitude }}, lng: {{ agent.longitude }}},
+                map: map,
+                title: "{{ agent.name }}"
+            });
+        {% endfor %}
+    }
+
+    window.onload = initMap;
+</script>
+{% endblock %}
+{% endblock %} {% endcomment %}

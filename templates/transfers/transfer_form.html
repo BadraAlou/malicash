@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+        <h2 class="fw-bold">
+            <i class="fas fa-paper-plane text-success me-2"></i>Envoyer de l'argent
+        </h2>
+        <p class="text-muted">Complétez les informations pour effectuer votre transfert</p>
+        </div>
+
+        <form method="post" class="row g-4">
+        {% csrf_token %}
+
+        <!-- Bloc destinataire -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-4 bg-grey-soft">
+            <h5 class="fw-semibold mb-4 text-primary">Informations du destinataire</h5>
+
+            <div class="mb-3">
+                {{ form.receiver_name.label_tag }} 
+                {{ form.receiver_name }}
+            </div>
+            <div class="mb-3">
+                {{ form.receiver_phone.label_tag }} 
+                {{ form.receiver_phone }}
+            </div>
+            <div class="mb-3">
+                {{ form.receiver_email.label_tag }} 
+                {{ form.receiver_email }}
+            </div>
+            </div>
+        </div>
+
+        <!-- Bloc transfert -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-4 bg-grey-soft">
+            <h5 class="fw-semibold mb-4 text-success">Détails du transfert</h5>
+
+            <div class="mb-3">
+                {{ form.amount.label_tag }} 
+                {{ form.amount }}
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                {{ form.from_country.label_tag }} 
+                {{ form.from_country }}
+                </div>
+                <div class="col-md-6 mb-3">
+                {{ form.to_country.label_tag }} 
+                {{ form.to_country }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                {{ form.from_currency.label_tag }} 
+                {{ form.from_currency }}
+                </div>
+                <div class="col-md-6 mb-3">
+                {{ form.to_currency.label_tag }} 
+                {{ form.to_currency }}
+                </div>
+            </div>
+            <div class="mb-3">
+                {{ form.payment_method.label_tag }} 
+                {{ form.payment_method }}
+            </div>
+            </div>
+        </div>
+
+        <!-- Notes et bouton -->
+        <div class="col-12">
+            <div class="card shadow-sm border-0 p-4 bg-grey-soft">
+            <h5 class="fw-semibold mb-3 text-dark">Notes additionnelles (optionnel)</h5>
+            {{ form.notes }}
+
+            <div class="text-end mt-4">
+                <button type="submit" class="btn btn-success px-4 py-2">
+                <i class="fas fa-check-circle me-1"></i>Envoyer maintenant
+                </button>
+            </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</section>
+
+{% comment %} <div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Envoyer de l'argent</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5 class="border-bottom pb-2 mb-3">Informations du destinataire</h5>
+                                {{ form.receiver_name|as_crispy_field }}
+                                {{ form.receiver_phone|as_crispy_field }}
+                                {{ form.receiver_email|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5 class="border-bottom pb-2 mb-3">Détails du transfert</h5>
+                                {{ form.amount|as_crispy_field }}
+                                {{ form.from_country|as_crispy_field }}
+                                {{ form.to_country|as_crispy_field }}
+                                {{ form.from_currency|as_crispy_field }}  {# Ajouté ici #}
+                                {{ form.to_currency|as_crispy_field }}    {# Ajouté ici #}
+                                {{ form.payment_method|as_crispy_field }}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h5 class="border-bottom pb-2 mb-3">Notes additionnelles (optionnel)</h5>
+                            {{ form.notes|as_crispy_field }}
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-5 py-2">
+                                <i class="fas fa-paper-plane me-2"></i>Envoyer maintenant
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+{% endblock %}

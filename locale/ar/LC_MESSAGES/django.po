@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-08 09:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ARABIC <AR@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#: .\templates\base.html:35
+msgid "Envoyer de l'argent"
+msgstr "إرسال الأموال"
+
+#: .\templates\base.html:38
+msgid "Suivi de transfert"
+msgstr "تتبع التحويل"
+
+#: .\templates\base.html:41
+msgid "Tarifs et frais"
+msgstr "الرسوم والتكاليف"
+
+#: .\templates\base.html:44 .\templates\base.html:137
+msgid "Nos agents"
+msgstr "وكلائنا"
+
+#: .\templates\base.html:47
+msgid "Aide"
+msgstr "المساعدة"
+
+#: .\templates\base.html:72
+msgid "Mon profil"
+msgstr "ملفي الشخصي"
+
+#: .\templates\base.html:73
+msgid "Mes transferts"
+msgstr "تحويلاتي"
+
+#: .\templates\base.html:75
+msgid "Déconnexion"
+msgstr "تسجيل الخروج"
+
+#: .\templates\base.html:80
+msgid "Connexion"
+msgstr "تسجيل الدخول"
+
+#: .\templates\base.html:83
+msgid "S'inscrire"
+msgstr "التسجيل"
+
+#: .\templates\base.html:114 .\templates\base.html:153
+msgid "MaliCash"
+msgstr "مالي كاش"
+
+#: .\templates\base.html:115
+msgid ""
+"Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à "
+"moindre coût."
+msgstr "أرسل المال في جميع أنحاء العالم بسرعة وأمان وبتكلفة منخفضة."
+
+#: .\templates\base.html:124
+msgid "Liens utiles"
+msgstr "روابط مفيدة"
+
+#: .\templates\base.html:126
+msgid "Accueil"
+msgstr "الرئيسية"
+
+#: .\templates\base.html:127
+msgid "À propos"
+msgstr "حول"
+
+#: .\templates\base.html:128
+msgid "Services"
+msgstr "الخدمات"
+
+#: .\templates\base.html:129 .\templates\base.html:142
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: .\templates\base.html:133 .\templates\base.html:138
+msgid "Support"
+msgstr "الدعم"
+
+#: .\templates\base.html:135
+msgid "FAQ"
+msgstr "الأسئلة الشائعة"
+
+#: .\templates\base.html:136
+msgid "Suivi"
+msgstr "تتبع"
+
+#: .\templates\base.html:144
+msgid "Bamako, Mali"
+msgstr "باماكو، مالي"
+
+#: .\templates\base.html:153
+msgid "Tous droits réservés"
+msgstr "جميع الحقوق محفوظة"
+
+#: .\templates\base.html:156
+msgid "Conditions d'utilisation"
+msgstr "شروط الاستخدام"
+
+#: .\templates\base.html:157
+msgid "Politique de confidentialité"
+msgstr "سياسة الخصوصية"
+
+# Ajout des nouvelles traductions
+msgid "Montant"
+msgstr "المبلغ"
+
+msgid "Pays d'envoi"
+msgstr "الدولة المرسلة"

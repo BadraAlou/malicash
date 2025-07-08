@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Calculateur de frais et taux de change</h2>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ form.amount|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.from_currency|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.to_currency|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary px-4 py-2">
+                                <i class="fas fa-calculator me-2"></i>Calculer
+                            </button>
+                        </div>
+                    </form>
+                    
+                    {% if result %}
+                        <div class="mt-5">
+                            <div class="card bg-light">
+                                <div class="card-body p-4">
+                                    <h4 class="card-title text-center mb-4">Résultat du calcul</h4>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr>
+                                                <td>Montant à envoyer:</td>
+                                                <td class="text-end fw-bold">{{ result.amount }} {{ result.from_currency.code }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Taux de change:</td>
+                                                <td class="text-end">1 {{ result.from_currency.code }} = {{ result.exchange_rate }} {{ result.to_currency.code }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Montant converti:</td>
+                                                <td class="text-end">{{ result.converted_amount }} {{ result.to_currency.code }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Frais:</td>
+                                                <td class="text-end">{{ result.fee }} {{ result.to_currency.code }}</td>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <td>Montant à recevoir:</td>
+                                                <td class="text-end fw-bold">{{ result.received_amount }} {{ result.to_currency.code }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="text-center mt-3">
+                                        <a href="{% url 'transfer_money' %}" class="btn btn-success">
+                                            <i class="fas fa-paper-plane me-2"></i>Effectuer ce transfert
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        <section class="pricing-section py-5" style="background-color: #e6f9ef;">
+            <div class="container">
+                <div class="text-center mb-5">
+                <h2 class="fw-bold text-success">
+                    <i class="fas fa-coins me-2"></i> Nos tarifs
+                </h2>
+                <p class="text-muted">Consultez nos frais de transfert en fonction du montant envoyé</p>
+                </div>
+
+                <div class="table-responsive shadow rounded bg-white">
+                <table class="table table-hover table-bordered align-middle mb-0">
+                    <thead class="table-success">
+                    <tr>
+                        <th scope="col">Montant (FCFA)</th>
+                        <th scope="col">Frais</th>
+                        <th scope="col">Délai</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1 - 50 000</td>
+                        <td>2% + 500 FCFA</td>
+                        <td><span class="badge bg-success">Instantané</span></td>
+                    </tr>
+                    <tr>
+                        <td>50 001 - 200 000</td>
+                        <td>1.8% + 800 FCFA</td>
+                        <td><span class="badge bg-success">Instantané</span></td>
+                    </tr>
+                    <tr>
+                        <td>200 001 - 500 000</td>
+                        <td>1.5% + 1 000 FCFA</td>
+                        <td><span class="badge bg-success">Instantané</span></td>
+                    </tr>
+                    <tr>
+                        <td>500 001 - 1 000 000</td>
+                        <td>1.2% + 2 000 FCFA</td>
+                        <td><span class="badge bg-success">Instantané</span></td>
+                    </tr>
+                    <tr>
+                        <td>Plus de 1 000 000</td>
+                        <td>1% + 5 000 FCFA</td>
+                        <td><span class="badge bg-success">Instantané</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="alert alert-success mt-4 d-flex align-items-center" role="alert">
+                <i class="fas fa-info-circle me-2"></i>
+                <span>Les frais peuvent varier en fonction du pays de destination et de la méthode de paiement choisie.</span>
+                </div>
+            </div>
+        </section>
+
+            
+            {% comment %} <div class="card border-0 shadow mt-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4">Nos tarifs</h4>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Montant (FCFA)</th>
+                                    <th>Frais</th>
+                                    <th>Délai</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1 - 50 000</td>
+                                    <td>2% + 500 FCFA</td>
+                                    <td>Instantané</td>
+                                </tr>
+                                <tr>
+                                    <td>50 001 - 200 000</td>
+                                    <td>1.8% + 800 FCFA</td>
+                                    <td>Instantané</td>
+                                </tr>
+                                <tr>
+                                    <td>200 001 - 500 000</td>
+                                    <td>1.5% + 1 000 FCFA</td>
+                                    <td>Instantané</td>
+                                </tr>
+                                <tr>
+                                    <td>500 001 - 1 000 000</td>
+                                    <td>1.2% + 2 000 FCFA</td>
+                                    <td>Instantané</td>
+                                </tr>
+                                <tr>
+                                    <td>Plus de 1 000 000</td>
+                                    <td>1% + 5 000 FCFA</td>
+                                    <td>Instantané</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <p class="mb-0"><i class="fas fa-info-circle me-2"></i>Les frais peuvent varier en fonction du pays de destination et de la méthode de paiement choisie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+{% endblock %}

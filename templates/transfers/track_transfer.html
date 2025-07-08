@@ -1,0 +1,362 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block extra_css %}
+<style>
+    .tracking-section {
+        background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        min-height: 80vh;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .tracking-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        opacity: 0.3;
+    }
+    
+    .tracking-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 10;
+        animation: slideUp 0.8s ease-out;
+    }
+    
+    .tracking-title {
+        color: #92400e;
+        font-weight: 700;
+        position: relative;
+    }
+    
+    .tracking-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #d97706, #f59e0b);
+        border-radius: 2px;
+    }
+    
+    .btn-search {
+        background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        border: none;
+        border-radius: 15px;
+        padding: 12px 30px;
+        font-weight: 600;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(217, 119, 6, 0.3);
+    }
+    
+    .btn-search:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(217, 119, 6, 0.4);
+        background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+        color: white;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        font-size: 1.5rem;
+        color: white;
+        box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+        animation: pulse 3s infinite;
+    }
+    
+    .step-card {
+        transition: all 0.4s ease;
+        border-radius: 15px;
+        padding: 20px;
+    }
+    
+    .step-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(217, 119, 6, 0.2);
+    }
+    
+    .alert-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border: none;
+        border-radius: 15px;
+        color: white;
+    }
+    
+    .alert-warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        border: none;
+        border-radius: 15px;
+        color: white;
+    }
+    
+    .badge {
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+        }
+        50% {
+            box-shadow: 0 10px 30px rgba(217, 119, 6, 0.5);
+        }
+        100% {
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tracking-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card tracking-card border-0 shadow">
+                    <div class="card-body p-5">
+                        <h2 class="card-title text-center tracking-title mb-5">
+                            <i class="fas fa-search me-3"></i>
+                            Suivi de transfert
+                        </h2>
+                        
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    {{ form|crispy }}
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-search px-5 py-3">
+                                    <i class="fas fa-search me-2"></i>Rechercher mon transfert
+                                </button>
+                            </div>
+                        </form>
+                        
+                        {% if messages %}
+                            <div class="mt-4">
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} d-flex align-items-center" role="alert">
+                                        <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-triangle{% endif %} me-2"></i>
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        
+                        {% if transfer %}
+                            <div class="mt-5">
+                                <div class="alert alert-success p-4">
+                                    <div class="text-center mb-3">
+                                        <i class="fas fa-check-circle fa-3x"></i>
+                                    </div>
+                                    <h4 class="text-center mb-4">Transfert trouvé</h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Référence:</strong> {{ transfer.reference }}</p>
+                                            <p><strong>Date:</strong> {{ transfer.created_at|date:"d/m/Y H:i" }}</p>
+                                            <p><strong>Expéditeur:</strong> {{ transfer.sender.get_full_name }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Destinataire:</strong> {{ transfer.receiver_name }}</p>
+                                            <p><strong>Montant:</strong> {{ transfer.amount }} {{ transfer.from_currency.code }}</p>
+                                            <p><strong>Statut:</strong> <span class="badge bg-{{ transfer.status|yesno:'success,warning,danger' }}">{{ transfer.get_status_display }}</span></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <a href="{% url 'transfer_detail' transfer.reference %}" class="btn btn-outline-light">
+                                            <i class="fas fa-info-circle me-2"></i>Voir les détails complets
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="card tracking-card border-0 shadow mt-4">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4 text-center" style="color: #92400e;">
+                            <i class="fas fa-question-circle me-2"></i>
+                            Comment fonctionne le suivi?
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center step-card">
+                                    <div class="feature-icon mb-3">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <h5 style="color: #92400e;">Entrez la référence</h5>
+                                    <p class="text-muted">Saisissez le numéro de référence de votre transfert que vous avez reçu</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center step-card">
+                                    <div class="feature-icon mb-3">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <h5 style="color: #92400e;">Suivez le statut</h5>
+                                    <p class="text-muted">Voyez où en est votre transfert en temps réel avec des mises à jour</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center step-card">
+                                    <div class="feature-icon mb-3">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <h5 style="color: #92400e;">Confirmation</h5>
+                                    <p class="text-muted">Recevez une notification une fois le transfert terminé et prêt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Suivi de transfert</h2>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                {{ form|crispy }}
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary px-4 py-2">
+                                <i class="fas fa-search me-2"></i>Rechercher
+                            </button>
+                        </div>
+                    </form>
+                    {% if messages %}
+                        <div class="mt-4">
+                            {% for message in messages %}
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    {% if transfer %}
+                        <div class="mt-5">
+                            <div class="alert alert-success p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-check-circle fa-3x"></i>
+                                </div>
+                                <h4 class="text-center mb-3">Transfert trouvé</h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Référence:</strong> {{ transfer.reference }}</p>
+                                        <p><strong>Date:</strong> {{ transfer.created_at|date:"d/m/Y H:i" }}</p>
+                                        <p><strong>Expéditeur:</strong> {{ transfer.sender.get_full_name }}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Destinataire:</strong> {{ transfer.receiver_name }}</p>
+                                        <p><strong>Montant:</strong> {{ transfer.amount }} {{ transfer.from_currency.code }}</p>
+                                        <p><strong>Statut:</strong> <span class="badge bg-{{ transfer.status|yesno:'success,warning,danger' }}">{{ transfer.get_status_display }}</span></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mt-3">
+                                    <a href="{% url 'transfer_detail' transfer.reference %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-info-circle me-2"></i>Voir les détails complets
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="card border-0 shadow mt-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4">Comment fonctionne le suivi?</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="text-center">
+                                <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h5>Entrez la référence</h5>
+                                <p class="text-muted">Saisissez le numéro de référence de votre transfert</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="text-center">
+                                <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <h5>Suivez le statut</h5>
+                                <p class="text-muted">Voyez où en est votre transfert en temps réel</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="feature-icon bg-primary text-white rounded-circle mb-3">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h5>Confirmation</h5>
+                                <p class="text-muted">Recevez une notification une fois le transfert terminé</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% endcomment %}

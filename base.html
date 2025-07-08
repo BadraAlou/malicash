@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - MaliCash{% else %}MaliCash - Transfert d'argent{% endif %}</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="{% url 'home' %}">MaliCash</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'transfer_money' %}">Envoyer de l'argent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'track_transfer' %}">Suivi de transfert</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'calculator' %}">Tarifs et frais</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'find_agents' %}">Nos agents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'faq' %}">Aide</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user-circle me-1"></i>{{ user.username }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'profile' %}">Mon profil</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'transfer_history' %}">Mes transferts</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Déconnexion</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-outline-light btn-sm ms-2" href="{% url 'register' %}">S'inscrire</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">MaliCash</h5>
+                    <p>Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à moindre coût.</p>
+                    <div class="d-flex mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">Liens utiles</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-white">Accueil</a></li>
+                        <li class="mb-2"><a href="{% url 'about' %}" class="text-white">À propos</a></li>
+                        <li class="mb-2"><a href="{% url 'services' %}" class="text-white">Services</a></li>
+                        <li class="mb-2"><a href="{% url 'contact' %}" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">Support</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'faq' %}" class="text-white">FAQ</a></li>
+                        <li class="mb-2"><a href="{% url 'track_transfer' %}" class="text-white">Suivi</a></li>
+                        <li class="mb-2"><a href="{% url 'find_agents' %}" class="text-white">Nos agents</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Bamako, Mali</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +223 20 00 00 00</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> contact@malicash.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 MaliCash. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="{% url 'terms' %}" class="text-white me-3">Conditions d'utilisation</a>
+                    <a href="{% url 'privacy' %}" class="text-white">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/static/js/main.js"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

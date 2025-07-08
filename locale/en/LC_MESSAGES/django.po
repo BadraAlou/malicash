@@ -1,0 +1,1161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the MaliCash package.
+# YOUR NAME <your.email@example.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MaliCash 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-05 12:10+0000\n"
+"PO-Revision-Date: 2025-07-05 12:05+0000\n"
+"Last-Translator: YOUR NAME <your.email@example.com>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\base.html:138
+msgid "Tarifs et frais"
+msgstr "Rates and Fees"
+
+#: .\templates\base.html:144
+msgid "Nos agents"
+msgstr "Our Agents"
+
+#: .\templates\base.html:151 .\templates\base.html:216
+msgid "Voir l'historique"
+msgstr ""
+
+#: .\templates\base.html:158
+msgid "Nos innovations"
+msgstr ""
+
+#: .\templates\base.html:164
+msgid "Aide"
+msgstr "Help"
+
+#: .\templates\base.html:213
+msgid "Mon profil"
+msgstr "My Profile"
+
+#: .\templates\base.html:223
+msgid "Déconnexion"
+msgstr "Logout"
+
+#: .\templates\base.html:233
+msgid "Connexion"
+msgstr "Login"
+
+#: .\templates\base.html:239
+msgid "S'inscrire"
+msgstr "Sign Up"
+
+#: .\templates\base.html:407 .\templates\base.html:492
+msgid "MaliCash"
+msgstr "MaliCash"
+
+#: .\templates\base.html:408
+msgid ""
+"Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à "
+"moindre coût."
+msgstr "Send money worldwide quickly, securely, and at a low cost."
+
+#: .\templates\base.html:426
+msgid "Liens utiles"
+msgstr "Useful Links"
+
+#: .\templates\base.html:430
+msgid "Accueil"
+msgstr "Home"
+
+#: .\templates\base.html:435
+msgid "À propos"
+msgstr "About"
+
+#: .\templates\base.html:440
+msgid "Services"
+msgstr "Services"
+
+#: .\templates\base.html:445 .\templates\base.html:473
+msgid "Contact"
+msgstr "Contact"
+
+#: .\templates\base.html:452 .\templates\base.html:466
+msgid "Support"
+msgstr "Support"
+
+#: .\templates\base.html:456
+msgid "FAQ"
+msgstr "FAQ"
+
+#: .\templates\base.html:461
+msgid "Suivi"
+msgstr "Track"
+
+#: .\templates\base.html:476
+msgid "Bamako, Mali"
+msgstr "Bamako, Mali"
+
+#: .\templates\base.html:492
+msgid "Tous droits réservés"
+msgstr "All rights reserved"
+
+#: .\templates\base.html:496
+msgid "Conditions d'utilisation"
+msgstr "Terms of Use"
+
+#: .\templates\base.html:499
+msgid "Politique de confidentialité"
+msgstr "Privacy Policy"
+
+#: .\templates\core\home.html:2323
+msgid "Téléchargez notre application mobile"
+msgstr ""
+
+#: .\templates\core\home.html:2326
+msgid ""
+"Envoyez de l'argent, suivez vos transferts et gérez votre compte où que vous "
+"soyez, à tout moment. L'application MaliCash sera bientôt disponible sur "
+"Google Play et App Store."
+msgstr ""
+
+#: .\templates\core\home.html:2356
+msgid "Téléchargement direct (version test)"
+msgstr ""
+
+#: .\templates\users\register.html:6
+msgid "Inscription"
+msgstr ""
+
+#~ msgid "Envoyer de l'argent"
+#~ msgstr "Send Money"
+
+#~ msgid "Suivi de transfert"
+#~ msgstr "Track Transfer"
+
+#~ msgid "Mes transferts"
+#~ msgstr "My Transfers"
+
+# Nouvelles traductions ajoutées
+#~ msgid "Montant"
+#~ msgstr "Amount"
+
+#~ msgid "Pays d'envoi"
+#~ msgstr "Sending Country"
+
+# Traductions pour l'accordéon des frais (basé sur le précédent message)
+#~ msgid "Quels sont les frais de transfert ?"
+#~ msgstr "What are the transfer fees?"
+
+#~ msgid "Nos frais sont transparents et compétitifs :"
+#~ msgstr "Our fees are transparent and competitive:"
+
+#~ msgid "Montant (XOF)"
+#~ msgstr "Amount (XOF)"
+
+#~ msgid "Frais (XOF)"
+#~ msgstr "Fees (XOF)"
+
+#~ msgid "Délai"
+#~ msgstr "Delay"
+
+#~ msgid "0 - 65 500 XOF"
+#~ msgstr "0 - 65,500 XOF"
+
+#~ msgid "1 958 XOF"
+#~ msgstr "1,958 XOF"
+
+#~ msgid "Instantané"
+#~ msgstr "Instant"
+
+#~ msgid "65 501 - 327 500 XOF"
+#~ msgstr "65,501 - 327,500 XOF"
+
+#~ msgid "3 267 XOF"
+#~ msgstr "3,267 XOF"
+
+#~ msgid "327 501 XOF et plus"
+#~ msgstr "327,501 XOF and more"
+
+#~ msgid "1% du montant"
+#~ msgstr "1% of the amount"
+
+#~ msgid "1-3 jours"
+#~ msgstr "1-3 days"
+
+#~ msgid "Aucun frais caché."
+#~ msgstr "No hidden fees."
+
+#~ msgid "Le taux de change est fixé au moment de la transaction."
+#~ msgstr "The exchange rate is set at the time of the transaction."
+
+#: .\templates\core\send_money.html:8
+msgid "Bienvenue sur Transfert d'Argent !"
+msgstr "Welcome to Money Transfer!"
+
+#: .\templates\core\send_money.html:9
+msgid "Envoyez de l'argent à l'étranger rapidement et facilement."
+msgstr "Send money abroad quickly and easily."
+
+#: .\templates\core\send_money.html:10
+msgid "Rejoignez les millions d'utilisateurs qui nous font confiance depuis des années pour leurs transferts d'argent."
+msgstr "Join the millions of users who have trusted us for years with their money transfers."
+
+#: .\templates\core\send_money.html:11
+msgid "Envoyez de l'argent en ligne à vos proches en quelques instants avec MaliCash. Avec plus de 200 pays et territoires couverts, les transferts d'argent internationaux n'ont jamais été aussi simples."
+msgstr "Send money online to your loved ones in just a few moments with MaliCash. With over 200 countries and territories covered, international money transfers have never been easier."
+
+#: .\templates\core\send_money.html:12
+msgid "Intelligence. Sécurité. Ensemble. Apprenez comment #BeFraudSmart"
+msgstr "Intelligence. Security. Together. Learn how #BeFraudSmart"
+
+#: .\templates\core\send_money.html:13
+msgid "SOME DESCRIPTIVE TITLE"
+msgstr "SOME DESCRIPTIVE TITLE"  # Remplacez par un titre descriptif si nécessaire
+
+#: .\templates\core\home.html:22
+msgid "Envoyer maintenant"
+msgstr "Send Now"
+
+#: .\templates\core\home.html:24
+msgid "Suivre un transfert"
+msgstr "Track a Transfer"
+
+#: .\templates\core\home.html:27
+msgid "Devises par Pays"
+msgstr "Currencies by Country"
+
+#: .\templates\core\home.html:28
+msgid "Tous les taux sont exprimés en Franc CFA (XOF) - Notre devise de référence"
+msgstr "All rates are expressed in Franc CFA (XOF) - Our reference currency"
+
+#: .\templates\core\home.html:33
+msgid "Mali 🏠"
+msgstr "Mali 🏠"
+
+#: .\templates\core\home.html:36
+msgid "Franc CFA BCEAO"
+msgstr "Franc CFA BCEAO"
+
+#: .\templates\core\home.html:39
+msgid "Devise de référence"
+msgstr "Reference Currency"
+
+#: .\templates\core\home.html:44
+msgid "États-Unis"
+msgstr "United States"
+
+#: .\templates\core\home.html:47
+msgid "Dollar américain"
+msgstr "U.S. Dollar"
+
+#: .\templates\core\home.html:52
+msgid "France, Espagne"
+msgstr "France, Spain"
+
+#: .\templates\core\home.html:55
+msgid "Euro"
+msgstr "Euro"
+
+#: .\templates\core\home.html:60
+msgid "Gabon, Cameroun, Guinée Éq."
+msgstr "Gabon, Cameroon, Equatorial Guinea"
+
+#: .\templates\core\home.html:63
+msgid "Franc CFA BEAC"
+msgstr "Franc CFA BEAC"
+
+#: .\templates\core\home.html:68
+msgid "Guinée"
+msgstr "Guinea"
+
+#: .\templates\core\home.html:71
+msgid "Franc guinéen"
+msgstr "Guinean Franc"
+
+#: .\templates\core\home.html:76
+msgid "Canada"
+msgstr "Canada"
+
+#: .\templates\core\home.html:79
+msgid "Dollar canadien"
+msgstr "Canadian Dollar"
+
+#: .\templates\core\home.html:84
+msgid "Burkina Faso, Bénin, Niger, Togo"
+msgstr "Burkina Faso, Benin, Niger, Togo"
+
+#: .\templates\core\home.html:89
+msgid "Turquie"
+msgstr "Turkey"
+
+#: .\templates\core\home.html:92
+msgid "Lire turque"
+msgstr "Turkish Lira"
+
+#: .\templates\core\home.html:97
+msgid "Maroc"
+msgstr "Morocco"
+
+#: .\templates\core\home.html:100
+msgid "Dirham marocain"
+msgstr "Moroccan Dirham"
+
+#: .\templates\core\home.html:105
+msgid "Tunisie"
+msgstr "Tunisia"
+
+#: .\templates\core\home.html:108
+msgid "Dinar tunisien"
+msgstr "Tunisian Dinar"
+
+#: .\templates\core\home.html:113
+msgid "Chine"
+msgstr "China"
+
+#: .\templates\core\home.html:116
+msgid "Yuan chinois"
+msgstr "Chinese Yuan"
+
+#: .\templates\core\home.html:121
+msgid "Japon"
+msgstr "Japan"
+
+#: .\templates\core\home.html:124
+msgid "Yen japonais"
+msgstr "Japanese Yen"
+
+#: .\templates\core\home.html:129
+msgid "Russie"
+msgstr "Russia"
+
+#: .\templates\core\home.html:132
+msgid "Rouble russe"
+msgstr "Russian Ruble"
+
+#: .\templates\core\home.html:137
+msgid "Note :"
+msgstr "Note:"
+
+#: .\templates\core\home.html:137
+msgid "Tous les taux de change sont exprimés en Franc CFA (XOF), la devise officielle du Mali où se trouve notre siège social. Les taux sont mis à jour quotidiennement et peuvent varier selon les conditions du marché."
+msgstr "All exchange rates are expressed in Franc CFA (XOF), the official currency of Mali where our head office is located. Rates are updated daily and may vary according to market conditions."
+
+#: .\templates\core\home.html:147
+msgid "Nos Services"
+msgstr "Our Services"
+
+#: .\templates\core\home.html:148
+msgid "Des solutions complètes pour vos besoins de transfert d'argent"
+msgstr "Comprehensive solutions for your money transfer needs"
+
+#: .\templates\core\home.html:153
+msgid "Transfert d'Argent International"
+msgstr "International Money Transfer"
+
+#: .\templates\core\home.html:155
+msgid "Envoyez de l'argent à vos proches partout dans le monde en quelques clics."
+msgstr "Send money to your loved ones worldwide in just a few clicks."
+
+#: .\templates\core\home.html:157
+msgid "Transferts instantanés"
+msgstr "Instant Transfers"
+
+#: .\templates\core\home.html:158
+msgid "Taux de change compétitifs"
+msgstr "Competitive Exchange Rates"
+
+#: .\templates\core\home.html:159
+msgid "Frais transparents"
+msgstr "Transparent Fees"
+
+#: .\templates\core\home.html:166
+msgid "Transfert Mobile Money"
+msgstr "Mobile Money Transfer"
+
+#: .\templates\core\home.html:168
+msgid "Envoyez de l'argent directement vers un portefeuille mobile."
+msgstr "Send money directly to a mobile wallet."
+
+#: .\templates\core\home.html:170
+msgid "Orange Money"
+msgstr "Orange Money"
+
+#: .\templates\core\home.html:171
+msgid "Wave"
+msgstr "Wave"
+
+#: .\templates\core\home.html:172
+msgid "Moov Money"
+msgstr "Moov Money"
+
+#: .\templates\core\home.html:179
+msgid "Livraison à Domicile"
+msgstr "Home Delivery"
+
+#: .\templates\core\home.html:180
+msgid "Par agent MaliCash"
+msgstr "By MaliCash Agent"
+
+#: .\templates\core\home.html:182
+msgid "Vous avez une difficulté de déplacement ?"
+msgstr "Having trouble getting around?"
+
+#: .\templates\core\home.html:182
+msgid "Nous envoyons un agent jusqu’à votre domicile pour :"
+msgstr "We send an agent to your home for:"
+
+#: .\templates\core\home.html:184
+msgid "Vous remettre l'argent envoyé par un proche"
+msgstr "To deliver money sent by a loved one"
+
+#: .\templates\core\home.html:185
+msgid "Vous aider à envoyer de l'argent depuis chez vous"
+msgstr "To help you send money from home"
+
+#: .\templates\core\home.html:186
+msgid "Vous assister pour tout besoin de transfert"
+msgstr "To assist with any transfer needs"
+
+#: .\templates\core\home.html:189
+msgid "Contactez l'agence pour vos besoins"
+msgstr "Contact the agency for your needs"
+
+#: .\templates\core\home.html:196
+msgid "Transfert Bancaire"
+msgstr "Bank Transfer"
+
+#: .\templates\core\home.html:198
+msgid "Envoyez votre argent directement sur votre compte bancaire via MaliCash. Une fois le transfert effectué vers MaliCash, nous le transférons facilement sur les comptes de vos clients dans n'importe quelle banque."
+msgstr "Send your money directly to your bank account via MaliCash. Once the transfer is made to MaliCash, we easily transfer it to your clients' accounts in any bank."
+
+#: .\templates\core\home.html:200
+msgid "Transfert sécurisé vers les comptes bancaires"
+msgstr "Secure transfer to bank accounts"
+
+#: .\templates\core\home.html:201
+msgid "Compatibilité avec toutes les banques"
+msgstr "Compatibility with all banks"
+
+#: .\templates\core\home.html:202
+msgid "Processus rapide et fiable"
+msgstr "Fast and reliable process"
+
+#: .\templates\core\home.html:209
+msgid "Questions fréquentes"
+msgstr "Frequently Asked Questions"
+
+#: .\templates\core\home.html:210
+msgid "Trouvez rapidement les réponses à vos questions"
+msgstr "Quickly find answers to your questions"
+
+#: .\templates\core\home.html:216
+msgid "Comment envoyer de l'argent vers un compte bancaire ?"
+msgstr "How to send money to a bank account?"
+
+#: .\templates\core\home.html:219
+msgid "Pour envoyer de l'argent vers un compte bancaire :"
+msgstr "To send money to a bank account:"
+
+#: .\templates\core\home.html:221
+msgid "Créez votre compte MaliCash"
+msgstr "Create your MaliCash account"
+
+#: .\templates\core\home.html:222
+msgid "Sélectionnez 'Transfert vers compte bancaire'"
+msgstr "Select 'Transfer to Bank Account'"
+
+#: .\templates\core\home.html:223
+msgid "Entrez les informations du destinataire (nom, IBAN, BIC)"
+msgstr "Enter the recipient's details (name, IBAN, BIC)"
+
+#: .\templates\core\home.html:224
+msgid "Choisissez votre méthode de paiement"
+msgstr "Choose your payment method"
+
+#: .\templates\core\home.html:225
+msgid "Confirmez et payez - c'est tout !"
+msgstr "Confirm and pay - that's it!"
+
+#: .\templates\core\home.html:227
+msgid "Le transfert est généralement traité en 1-3 jours ouvrables."
+msgstr "The transfer is usually processed within 1-3 business days."
+
+#: .\templates\core\home.html:233
+msgid "Comment envoyer de l'argent depuis une agence ?"
+msgstr "How to send money from an agency?"
+
+#: .\templates\core\home.html:236
+msgid "Pour envoyer depuis notre agence de Bacodjicoroni :"
+msgstr "To send from our Bacodjicoroni agency:"
+
+#: .\templates\core\home.html:238
+msgid "Rendez-vous à notre agence avec une pièce d'identité"
+msgstr "Visit our agency with an ID"
+
+#: .\templates\core\home.html:239
+msgid "Remplissez le formulaire de transfert"
+msgstr "Fill out the transfer form"
+
+#: .\templates\core\home.html:240
+msgid "Fournissez les informations du destinataire"
+msgstr "Provide the recipient's details"
+
+#: .\templates\core\home.html:241
+msgid "Payez en espèces ou par carte"
+msgstr "Pay in cash or by card"
+
+#: .\templates\core\home.html:242
+msgid "Recevez votre reçu avec le numéro de suivi"
+msgstr "Receive your receipt with the tracking number"
+
+#: .\templates\core\home.html:244
+msgid "Adresse :"
+msgstr "Address:"
+
+#: .\templates\core\home.html:244
+msgid "Bacodjicoroni, Bamako, Mali"
+msgstr "Bacodjicoroni, Bamako, Mali"
+
+#: .\templates\core\home.html:245
+msgid "Horaires :"
+msgstr "Hours:"
+
+#: .\templates\core\home.html:245
+msgid "Lun-Ven 8h-18h, Sam 9h-15h"
+msgstr "Mon-Fri 8am-6pm, Sat 9am-3pm"
+
+#: .\templates\core\home.html:251
+msgid "Comment envoyer de l'argent via l'application mobile ?"
+msgstr "How to send money via the mobile app?"
+
+#: .\templates\core\home.html:254
+msgid "Avec notre application mobile MaliCash :"
+msgstr "With our MaliCash mobile app:"
+
+#: .\templates\core\home.html:256
+msgid "Téléchargez l'app MaliCash sur votre smartphone"
+msgstr "Download the MaliCash app on your smartphone"
+
+#: .\templates\core\home.html:257
+msgid "Créez votre compte et vérifiez votre identité"
+msgstr "Create your account and verify your identity"
+
+#: .\templates\core\home.html:258
+msgid "Ajoutez vos méthodes de paiement"
+msgstr "Add your payment methods"
+
+#: .\templates\core\home.html:259
+msgid "Sélectionnez le destinataire ou ajoutez-en un nouveau"
+msgstr "Select the recipient or add a new one"
+
+#: .\templates\core\home.html:260
+msgid "Entrez le montant et confirmez"
+msgstr "Enter the amount and confirm"
+
+#: .\templates\core\home.html:262
+msgid "L'application est disponible sur iOS et Android. Transferts instantanés 24h/24 !"
+msgstr "The app is available on iOS and Android. Instant transfers 24/7!"
+
+#: .\templates\core\home.html:268
+msgid "Combien de temps pour recevoir un transfert ?"
+msgstr "How long does it take to receive a transfer?"
+
+#: .\templates\core\home.html:271
+msgid "Les délais de réception dépendent de la méthode choisie :"
+msgstr "Delivery times depend on the chosen method:"
+
+#: .\templates\core\home.html:273
+msgid "Retrait en espèces :"
+msgstr "Cash withdrawal:"
+
+#: .\templates\core\home.html:273
+msgid "Immédiat à quelques minutes"
+msgstr "Immediate to a few minutes"
+
+#: .\templates\core\home.html:274
+msgid "Portefeuille mobile :"
+msgstr "Mobile wallet:"
+
+#: .\templates\core\home.html:274
+msgid "Instantané"
+msgstr "Instant"
+
+#: .\templates\core\home.html:275
+msgid "Compte bancaire :"
+msgstr "Bank account:"
+
+#: .\templates\core\home.html:275
+msgid "1-3 jours ouvrables"
+msgstr "1-3 business days"
+
+#: .\templates\core\home.html:276
+msgid "Livraison à domicile :"
+msgstr "Home delivery:"
+
+#: .\templates\core\home.html:276
+msgid "2-4 heures"
+msgstr "2-4 hours"
+
+#: .\templates\core\home.html:278
+msgid "Vous recevrez une notification dès que le transfert est disponible pour le destinataire."
+msgstr "You will receive a notification as soon as the transfer is available for the recipient."
+
+#: .\templates\core\home.html:284
+msgid "Quel est le montant maximum d'un transfert international ?"
+msgstr "What is the maximum amount for an international transfer?"
+
+#: .\templates\core\home.html:287
+msgid "Les limites de transfert varient selon votre statut :"
+msgstr "Transfer limits vary depending on your status:"
+
+#: .\templates\core\home.html:289
+msgid "NKADJAGO :"
+msgstr "NKADJAGO:"
+
+#: .\templates\core\home.html:291
+msgid "De 1 à 1 million par mois"
+msgstr "From 1 to 1 million per month"
+
+#: .\templates\core\home.html:294
+msgid "Atchimma :"
+msgstr "Atchimma:"
+
+#: .\templates\core\home.html:296
+msgid "De 1 million à 50 millions par mois"
+msgstr "From 1 million to 50 million per month"
+
+#: .\templates\core\home.html:299
+msgid "Pour des montants plus élevés, contactez notre service client au"
+msgstr "For higher amounts, contact our customer service at"
+
+#: .\templates\core\home.html:305
+msgid "Quels sont les frais de transfert ?"
+msgstr "What are the transfer fees?"
+
+#: .\templates\core\home.html:308
+msgid "Nos frais sont transparents et compétitifs :"
+msgstr "Our fees are transparent and competitive:"
+
+#: .\templates\core\home.html:314
+msgid "Montant (XOF)"
+msgstr "Amount (XOF)"
+
+#: .\templates\core\home.html:315
+msgid "Frais (XOF)"
+msgstr "Fees (XOF)"
+
+#: .\templates\core\home.html:316
+msgid "Délai"
+msgstr "Delay"
+
+#: .\templates\core\home.html:319
+msgid "1 - 65 500 XOF"
+msgstr "1 - 65,500 XOF"
+
+#: .\templates\core\home.html:320
+msgid "1 958 XOF"
+msgstr "1,958 XOF"
+
+#: .\templates\core\home.html:325
+msgid "65 501 - 327 500 XOF"
+msgstr "65,501 - 327,500 XOF"
+
+#: .\templates\core\home.html:326
+msgid "3 267 XOF"
+msgstr "3,267 XOF"
+
+#: .\templates\core\home.html:331
+msgid "327 501 XOF et plus"
+msgstr "327,501 XOF and more"
+
+#: .\templates\core\home.html:332
+msgid "1% du montant"
+msgstr "1% of the amount"
+
+#: .\templates\core\home.html:333
+msgid "Dans les 24h"
+msgstr "Within 24h"
+
+#: .\templates\core\home.html:336
+msgid "Aucun frais caché."
+msgstr "No hidden fees."
+
+#: .\templates\core\home.html:336
+msgid "Le taux de change est fixé au moment de la transaction."
+msgstr "The exchange rate is set at the time of the transaction."
+
+#: .\templates\core\home.html:342
+msgid "Transferts sécurisés 24h/24"
+msgstr "Secure transfers 24/7"
+
+#: .\templates\core\home.html:343
+msgid "Suivi en temps réel"
+msgstr "Real-time tracking"
+
+#: .\templates\core\home.html:344
+msgid "Support client multilingue"
+msgstr "Multilingual customer support"
+
+#: .\templates\core\home.html:350
+msgid "Comment suivre mon transfert ?"
+msgstr "How to track my transfer?"
+
+#: .\templates\core\home.html:353
+msgid "Plusieurs moyens pour suivre votre transfert :"
+msgstr "Several ways to track your transfer:"
+
+#: .\templates\core\home.html:356
+msgid "Application mobile"
+msgstr "Mobile App"
+
+#: .\templates\core\home.html:358
+msgid "Suivi en temps réel avec notifications"
+msgstr "Real-time tracking with notifications"
+
+#: .\templates\core\home.html:361
+msgid "Site web"
+msgstr "Website"
+
+#: .\templates\core\home.html:363
+msgid "Entrez votre numéro de référence"
+msgstr "Enter your reference number"
+
+#: .\templates\core\home.html:366
+msgid "SMS"
+msgstr "SMS"
+
+#: .\templates\core\home.html:368
+msgid "Notifications automatiques"
+msgstr "Automatic notifications"
+
+#: .\templates\core\home.html:374
+msgid "Quels documents sont nécessaires ?"
+msgstr "What documents are required?"
+
+#: .\templates\core\home.html:377
+msgid "Documents requis selon le type de transfert :"
+msgstr "Documents required depending on the transfer type:"
+
+#: .\templates\core\home.html:379
+msgid "Pour l'expéditeur :"
+msgstr "For the sender:"
+
+#: .\templates\core\home.html:381
+msgid "Pièce d'identité valide"
+msgstr "Valid ID"
+
+#: .\templates\core\home.html:382
+msgid "Justificatif de domicile"
+msgstr "Proof of address"
+
+#: .\templates\core\home.html:383
+msgid "Coordonnées bancaires (si applicable)"
+msgstr "Bank details (if applicable)"
+
+#: .\templates\core\home.html:386
+msgid "Pour le destinataire :"
+msgstr "For the recipient:"
+
+#: .\templates\core\home.html:388
+msgid "Nom complet"
+msgstr "Full name"
+
+#: .\templates\core\home.html:389
+msgid "Numéro de téléphone"
+msgstr "Phone number"
+
+#: .\templates\core\home.html:390
+msgid "Adresse complète"
+msgstr "Full address"
+
+#: .\templates\core\home.html:391
+msgid "Pièce d'identité (pour retrait)"
+msgstr "ID (for withdrawal)"
+
+#: .\templates\core\home.html:397
+msgid "Ce que MaliCash apporte de nouveau"
+msgstr "What MaliCash Brings New"
+
+#: .\templates\core\home.html:402
+msgid "Transferts personnalisés"
+msgstr "Personalized Transfers"
+
+#: .\templates\core\home.html:404
+msgid "Des options flexibles pour les familles, entreprises ou transferts réguliers. MaliCash s’adapte à vos besoins."
+msgstr "Flexible options for families, businesses, or regular transfers. MaliCash adapts to your needs."
+
+#: .\templates\core\home.html:409
+msgid "Intégration de cryptomonnaies"
+msgstr "Cryptocurrency Integration"
+
+#: .\templates\core\home.html:411
+msgid "Envoyez de l'argent via Bitcoin, USDT et plus encore pour des transferts rapides et peu coûteux."
+msgstr "Send money via Bitcoin, USDT, and more for fast and low-cost transfers."
+
+#: .\templates\core\home.html:416
+msgid "Programme de fidélité"
+msgstr "Loyalty Program"
+
+#: .\templates\core\home.html:418
+msgid "Gagnez des récompenses à chaque transaction avec notre système de points ou cashback."
+msgstr "Earn rewards with every transaction through our points or cashback system."
+
+#: .\templates\core\home.html:423
+msgid "Application mobile intuitive"
+msgstr "Intuitive Mobile App"
+
+#: .\templates\core\home.html:425
+msgid "Suivi en temps réel, notifications personnalisées et assistance directe dans une seule appli."
+msgstr "Real-time tracking, personalized notifications, and direct support in one app."
+
+#: .\templates\core\home.html:430
+msgid "Technologie de pointe"
+msgstr "Cutting-Edge Technology"
+
+#: .\templates\core\home.html:432
+msgid "Nous utilisons l’IA pour sécuriser les transactions et améliorer votre expérience utilisateur."
+msgstr "We use AI to secure transactions and enhance your user experience."
+
+#: .\templates\core\home.html:437
+msgid "Engagement communautaire"
+msgstr "Community Engagement"
+
+#: .\templates\core\home.html:439
+msgid "MaliCash soutient des projets locaux et des initiatives sociales dans chaque région d’intervention."
+msgstr "MaliCash supports local projects and social initiatives in every region of operation."
+
+#: .\templates\core\home.html:444
+msgid "Plateforme éducative et financière"
+msgstr "Educational and Financial Platform"
+
+#: .\templates\core\home.html:446
+msgid "Des ressources utiles sur la gestion de l’argent, l’épargne et l’investissement, pour nos clients."
+msgstr "Useful resources on money management, savings, and investment for our clients."
+
+#: .\templates\core\home.html:451
+msgid "Solutions de microcrédit"
+msgstr "Microcredit Solutions"
+
+#: .\templates\core\home.html:453
+msgid "Des petits prêts accessibles pour démarrer un projet ou gérer une urgence."
+msgstr "Accessible small loans to start a project or manage an emergency."
+
+#: .\templates\core\home.html:458
+msgid "Options de paiement flexibles"
+msgstr "Flexible Payment Options"
+
+#: .\templates\core\home.html:460
+msgid "Carte bancaire, portefeuille électronique ou espèces : choisissez votre méthode préférée."
+msgstr "Credit card, e-wallet, or cash: choose your preferred method."
+
+#: .\templates\core\home.html:463
+msgid "MaliCash révolutionne le transfert d’argent en alliant technologie, accessibilité et impact social."
+msgstr "MaliCash revolutionizes money transfers by combining technology, accessibility, and social impact."
+
+#: .\templates\core\home.html:468
+msgid "Tarifs et Taux de change"
+msgstr "Rates and Exchange Rates"
+
+#: .\templates\core\home.html:469
+msgid "Des frais transparents et des taux de change compétitifs"
+msgstr "Transparent fees and competitive exchange rates"
+
+#: .\templates\core\home.html:474
+msgid "Calculez le montant à recevoir"
+msgstr "Calculate the amount to receive"
+
+#: .\templates\core\home.html:475
+msgid "Calcul automatique en temps réel"
+msgstr "Automatic real-time calculation"
+
+#: .\templates\core\home.html:480
+msgid "Montant"
+msgstr "Amount"
+
+#: .\templates\core\home.html:483
+msgid "Devise d'envoi"
+msgstr "Sending Currency"
+
+#: .\templates\core\home.html:486
+msgid "Devise de réception"
+msgstr "Receiving Currency"
+
+#: .\templates\core\home.html:489
+msgid "🌍 Devises Principales"
+msgstr "🌍 Main Currencies"
+
+#: .\templates\core\home.html:490
+msgid "XOF - Franc CFA BCEAO (Mali)"
+msgstr "XOF - Franc CFA BCEAO (Mali)"
+
+#: .\templates\core\home.html:491
+msgid "EUR - Euro (France, Espagne)"
+msgstr "EUR - Euro (France, Spain)"
+
+#: .\templates\core\home.html:492
+msgid "USD - Dollar américain"
+msgstr "USD - U.S. Dollar"
+
+#: .\templates\core\home.html:493
+msgid "CAD - Dollar canadien"
+msgstr "CAD - Canadian Dollar"
+
+#: .\templates\core\home.html:494
+msgid "GBP - Livre sterling"
+msgstr "GBP - British Pound"
+
+#: .\templates\core\home.html:496
+msgid "🌍 Afrique"
+msgstr "🌍 Africa"
+
+#: .\templates\core\home.html:497
+msgid "XAF - Franc CFA BEAC (Gabon, Cameroun)"
+msgstr "XAF - Franc CFA BEAC (Gabon, Cameroon)"
+
+#: .\templates\core\home.html:498
+msgid "GNF - Franc guinéen (Guinée)"
+msgstr "GNF - Guinean Franc (Guinea)"
+
+#: .\templates\core\home.html:499
+msgid "MAD - Dirham marocain (Maroc)"
+msgstr "MAD - Moroccan Dirham (Morocco)"
+
+#: .\templates\core\home.html:500
+msgid "TND - Dinar tunisien (Tunisie)"
+msgstr "TND - Tunisian Dinar (Tunisia)"
+
+#: .\templates\core\home.html:501
+msgid "DZD - Dinar algérien (Algérie)"
+msgstr "DZD - Algerian Dinar (Algeria)"
+
+#: .\templates\core\home.html:502
+msgid "NGN - Naira nigérian (Nigeria)"
+msgstr "NGN - Nigerian Naira (Nigeria)"
+
+#: .\templates\core\home.html:503
+msgid "GHS - Cedi ghanéen (Ghana)"
+msgstr "GHS - Ghanaian Cedi (Ghana)"
+
+#: .\templates\core\home.html:504
+msgid "SLL - Leone (Sierra Leone)"
+msgstr "SLL - Leone (Sierra Leone)"
+
+#: .\templates\core\home.html:506
+msgid "🌏 Autres"
+msgstr "🌏 Others"
+
+#: .\templates\core\home.html:507
+msgid "CNY - Yuan chinois (Chine)"
+msgstr "CNY - Chinese Yuan (China)"
+
+#: .\templates\core\home.html:508
+msgid "JPY - Yen japonais (Japon)"
+msgstr "JPY - Japanese Yen (Japan)"
+
+#: .\templates\core\home.html:509
+msgid "CHF - Franc suisse (Suisse)"
+msgstr "CHF - Swiss Franc (Switzerland)"
+
+#: .\templates\core\home.html:510
+msgid "AUD - Dollar australien"
+msgstr "AUD - Australian Dollar"
+
+#: .\templates\core\home.html:512
+msgid "🎯 Destinations Populaires"
+msgstr "🎯 Popular Destinations"
+
+#: .\templates\core\home.html:517
+msgid "🌍 Autres Destinations"
+msgstr "🌍 Other Destinations"
+
+#: .\templates\core\home.html:522
+msgid "Montant envoyé"
+msgstr "Amount Sent"
+
+#: .\templates\core\home.html:523
+msgid "Frais"
+msgstr "Fees"
+
+#: .\templates\core\home.html:524
+msgid "Taux de change"
+msgstr "Exchange Rate"
+
+#: .\templates\core\home.html:525
+msgid "Montant reçu"
+msgstr "Amount Received"
+
+#: .\templates\core\home.html:530
+msgid "Calcul automatique basé sur les taux en temps réel."
+msgstr "Automatic calculation based on real-time rates."
+
+#: .\templates\core\home.html:531
+msgid "En savoir plus"
+msgstr "Learn More"
+
+#: .\templates\core\home.html:536
+msgid "Grille tarifaire"
+msgstr "Fee Schedule"
+
+#: .\templates\core\home.html:537
+msgid "Frais en XOF (devise de référence)"
+msgstr "Fees in XOF (reference currency)"
+
+#: .\templates\core\home.html:543
+msgid "Garantie transparence :"
+msgstr "Transparency Guarantee:"
+
+#: .\templates\core\home.html:546
+msgid "Ce que disent nos clients"
+msgstr "What Our Clients Say"
+
+#: .\templates\core\home.html:547
+msgid "Découvrez les expériences authentiques de nos utilisateurs satisfaits"
+msgstr "Discover the authentic experiences of our satisfied users"
+
+#: .\templates\core\home.html:549
+msgid "4.9/5 basé sur 1000+ avis"
+msgstr "4.9/5 based on 1000+ reviews"
+
+#: .\templates\core\home.html:554
+msgid "Précédent"
+msgstr "Previous"
+
+#: .\templates\core\home.html:557
+msgid "Suivant"
+msgstr "Next"
+
+#: .\templates\core\home.html:563
+msgid "Téléchargez notre application mobile une fois prêt"
+msgstr "Download our mobile app once ready"
+
+#: .\templates\core\home.html:565
+msgid "Envoyez de l'argent, suivez vos transferts et gérez votre compte où que vous soyez, à tout moment. L'application MaliCash sera bientôt disponible sur Google Play et App Store."
+msgstr "Send money, track your transfers, and manage your account wherever you are, anytime. The MaliCash app will soon be available on Google Play and App Store."
+
+#: .\templates\core\home.html:569
+msgid "Application en développement"
+msgstr "App in Development"
+
+#: .\templates\core\home.html:571
+msgid "Notre équipe travaille activement sur le développement de l'application mobile. Elle sera disponible sur Google Play et App Store dans les prochaines semaines. Et la version Android Bientôt InchaAllah, vous pouvez teste une fois prêt via le téléchargement direct."
+msgstr "Our team is actively working on the mobile app development. It will be available on Google Play and App Store in the coming weeks. The Android version will be available soon InshaAllah; you can test it once ready via direct download."
+
+#: .\templates\core\home.html:576
+msgid "Google Play"
+msgstr "Google Play"
+
+#: .\templates\core\home.html:579
+msgid "App Store"
+msgstr "App Store"
+
+#: .\templates\core\home.html:584
+msgid "Téléchargement direct (version test) :"
+msgstr "Direct Download (test version):"
+
+#: .\templates\core\home.html:587
+msgid "APK Android"
+msgstr "Android APK"
+
+#: .\templates\core\home.html:588
+msgid "Version 1.0.0 Beta"
+msgstr "Version 1.0.0 Beta"
+
+#: .\templates\core\home.html:591
+msgid "Fichier sécurisé et testé • Taille: 25 MB"
+msgstr "Secure and tested file • Size: 25 MB"
+
+#: .\templates\core\home.html:595
+msgid "Fonctionnalités de l'application :"
+msgstr "App Features:"
+
+#: .\templates\core\home.html:597
+msgid "Transferts rapides"
+msgstr "Fast Transfers"
+
+#: .\templates\core\home.html:598
+msgid "Suivi en temps réel"
+msgstr "Real-time Tracking"
+
+#: .\templates\core\home.html:599
+msgid "Notifications push"
+msgstr "Push Notifications"
+
+#: .\templates\core\home.html:600
+msgid "Interface intuitive"
+msgstr "Intuitive Interface"
+
+#: .\templates\core\home.html:605
+msgid "Bientôt disponible sur les stores !"
+msgstr "Soon available on stores!"
+
+#: .\templates\core\home.html:606
+msgid "MaliCash App - Bientôt disponible"
+msgstr "MaliCash App - Soon Available"
+
+#: .\templates\core\home.html:607
+msgid "Bientôt !"
+msgstr "Soon!"
+
+#: .\templates\core\home.html:613
+msgid "L'application MaliCash sera bientôt disponible sur"
+msgstr "The MaliCash app will soon be available on"
+
+#: .\templates\core\home.html:613
+msgid "Restez connectés !"
+msgstr "Stay tuned!"
+
+#: .\templates\core\home.html:XXX
+msgid "Référence"
+msgstr "Reference"
+
+#: .\templates\core\home.html:XXX
+msgid "Date"
+msgstr "Date"
+
+#: .\templates\core\home.html:XXX
+msgid "Destinataire"
+msgstr "Recipient"
+
+#: .\templates\core\home.html:XXX
+msgid "Montant"
+msgstr "Amount"
+
+#: .\templates\core\home.html:XXX
+msgid "Destination"
+msgstr "Destination"
+
+#: .\templates\core\home.html:XXX
+msgid "Statut"
+msgstr "Status"
+
+#: .\templates\core\home.html:XXX
+msgid "Actions"
+msgstr "Actions"
+
+#: .\templates\core\home.html:XXX
+msgid "Aucun transfert trouvé"
+msgstr "No transfers found"
+
+#: .\templates\core\home.html:XXX
+msgid "Vous n'avez pas encore effectué de transfert"
+msgstr "You have not yet made a transfer"
+
+#: .\templates\core\home.html:XXX
+msgid "Envoyer de l'argent"
+msgstr "Send Money"
+
+#: .\templates\core\home.html:XXX
+msgid "Réussi"
+msgstr "Successful"
+
+#: .\templates\core\home.html:XXX
+msgid "En attente"
+msgstr "Pending"
+
+#: .\templates\core\home.html:XXX
+msgid "Échoué"
+msgstr "Failed"

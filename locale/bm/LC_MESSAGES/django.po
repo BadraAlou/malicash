@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-08 09:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: BAMBARA <BM@li.org>\n"
+"Language: bm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\base.html:35
+msgid "Envoyer de l'argent"
+msgstr "Sigi Kòrò"
+
+#: .\templates\base.html:38
+msgid "Suivi de transfert"
+msgstr "Kòrò Yé Taa"
+
+#: .\templates\base.html:41
+msgid "Tarifs et frais"
+msgstr "Kòrò Yé Naa"
+
+#: .\templates\base.html:44 .\templates\base.html:137
+msgid "Nos agents"
+msgstr "Nin Ye Kelenw"
+
+#: .\templates\base.html:47
+msgid "Aide"
+msgstr "So Ka Kòrò"
+
+#: .\templates\base.html:72
+msgid "Mon profil"
+msgstr "N Ka Taga"
+
+#: .\templates\base.html:73
+msgid "Mes transferts"
+msgstr "N Ka Kòrò Luu"
+
+#: .\templates\base.html:75
+msgid "Déconnexion"
+msgstr "Daxu Taga"
+
+#: .\templates\base.html:80
+msgid "Connexion"
+msgstr "Taga Kaŋ"
+
+#: .\templates\base.html:83
+msgid "S'inscrire"
+msgstr "Taga Kòrò"
+
+#: .\templates\base.html:114 .\templates\base.html:153
+msgid "MaliCash"
+msgstr "Mali Kòrò"
+
+#: .\templates\base.html:115
+msgid ""
+"Envoyez de l'argent partout dans le monde de manière rapide, sécurisée et à "
+"moindre coût."
+msgstr "Kòrò Yé Sigi Waraa, Naa Ye So, Naa Ye Kelen"
+
+#: .\templates\base.html:124
+msgid "Liens utiles"
+msgstr "Naa Luu Ye So"
+
+#: .\templates\base.html:126
+msgid "Accueil"
+msgstr "Daxu"
+
+#: .\templates\base.html:127
+msgid "À propos"
+msgstr "N Ka Taga Ye"
+
+#: .\templates\base.html:128
+msgid "Services"
+msgstr "Naa So Luu"
+
+#: .\templates\base.html:129 .\templates\base.html:142
+msgid "Contact"
+msgstr "Naxaara Kaŋ"
+
+#: .\templates\base.html:133 .\templates\base.html:138
+msgid "Support"
+msgstr "So Kaŋ"
+
+#: .\templates\base.html:135
+msgid "FAQ"
+msgstr "Naa Taa Luu"
+
+#: .\templates\base.html:136
+msgid "Suivi"
+msgstr "Taa Kaŋ"
+
+#: .\templates\base.html:144
+msgid "Bamako, Mali"
+msgstr "Bamako, Mali"
+
+#: .\templates\base.html:153
+msgid "Tous droits réservés"
+msgstr "Naa Xara Luu"
+
+#: .\templates\base.html:156
+msgid "Conditions d'utilisation"
+msgstr "Naa So Ye Xara"
+
+#: .\templates\base.html:157
+msgid "Politique de confidentialité"
+msgstr "Naa Taga Ye So"
+
+# Ajout des nouvelles traductions
+msgid "Montant"
+msgstr "Ka Wuli"
+
+msgid "Pays d'envoi"
+msgstr "Kabila Ka Jate"
