@@ -20,24 +20,29 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Hosts allowed
-ALLOWED_HOSTS = ['192.168.2.45',
-'localhost',
-'127.0.0.1',
-'0.0.0.0',
-'*',  # Pour le développement seulement
-]
+# ALLOWED_HOSTS = ['192.168.2.45',
+# 'localhost',
+# '127.0.0.1',
+# '0.0.0.0',
+# '*',  # Pour le développement seulement
+# ]
+
+ALLOWED_HOSTS = ['180.149.197.40', 'mali-cash.com', 'localhost', '127.0.0.1']
+
 
 # CORS (si vous utilisez django-cors-headers)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://192.168.2.45:8000",
+    "https://mali-cash.com",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.ngrok-free.app"
+    "https://*.ngrok-free.app",
+    "https://mali-cash.com",
 ]
 
 # Application definition
@@ -105,12 +110,12 @@ TEMPLATES = [
 # Database configuration
 WSGI_APPLICATION = 'malicash.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # DATABASES = {
@@ -123,6 +128,18 @@ DATABASES = {
 #         'PORT': config('DB_PORT'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'Db12345$',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -162,8 +179,10 @@ LOCALE_PATHS = [
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files
 MEDIA_URL = '/media/'
